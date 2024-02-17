@@ -1,6 +1,5 @@
 //Record Collection
 
-// Setup
 const recordCollection = {
     2548: {
       albumTitle: 'Slippery When Wet',
@@ -21,7 +20,6 @@ const recordCollection = {
     }
   };
   
-  // Only change code below this line
   function updateRecords(records, id, prop, value) {
   
     if (value) {
@@ -43,7 +41,6 @@ const recordCollection = {
 
   //Profile Lookup
 
-  // Setup
 const contacts = [
     {
       firstName: "Akira",
@@ -83,5 +80,55 @@ const contacts = [
     }
   }
   return "No such contact";
-    // Only change code above this line
   }
+
+
+  
+  // const numbers = [1, 2, 3, 4, 5];
+
+// const newNumbers = numbers;
+
+// newNumbers.pop();
+// newNumbers.push(8);
+
+// console.log(numbers);
+// console.log(newNumbers);
+
+// const students = ["Ali", "Berkay", "Ceren", "Barkın"];
+
+// const newStudents = [...students];
+
+// newStudents.shift();
+// newStudents.pop();
+
+// console.log(students);
+// console.log(newStudents);
+
+// const patients = [
+//   { name: "Torpil", age: 1 },
+//   {
+//     name: "Paşa",
+//     age: 11,
+//   },
+// ];
+
+// const newPatient = [...patients, { name: "Felix", age: 12 }];
+
+// console.log(newPatient);
+// console.log(patients);
+
+const patient = {
+  name: "Paşa",
+  age: 12,
+  type: "it",
+  breed: "golden retriever",
+  hobbies: ["top", "yüzme", "havlama"]
+}
+
+// const newPatient = {...patient};
+// patient.hobbies[1] = "ağaç sulamak"; //SOFT
+
+const newPatient = JSON.parse(JSON.stringify(patient)); 
+patient.hobbies[2] = "değişti bak"; //HARD
+console.log(patient);
+console.log(newPatient);

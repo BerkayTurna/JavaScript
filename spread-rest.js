@@ -93,25 +93,68 @@
 
   //Nesneden veri ayıklama
 
-  const person = {
-    name: "John",
-    age: 30,
-    city: "London",
-    country: "England",
-  };
+  // const person = {
+  //   name: "John",
+  //   age: 30,
+  //   city: "London",
+  //   country: "England",
+  // };
   
-  const { name, age } = person;
+  // const { name, age } = person;
   
-  console.log(name);
-  console.log(age);
+  // console.log(name);
+  // console.log(age);
 
 
   //Diziden veri ayıklama
 
-  const numbers = [1, 2, 3, 4, 5];
+//   const numbers = [1, 2, 3, 4, 5];
 
-const [first, second, ...rest] = numbers;
+// const [first, second, ...rest] = numbers;
 
-console.log(first);
-console.log(second);
-console.log(rest);
+// console.log(first);
+// console.log(second);
+// console.log(rest);
+
+
+
+
+const petAnimals = ["cat", "dog", "parrot", "guinea pig", "ferret"];
+
+//yanlış..
+// const newPets = petAnimals
+
+// newPets.pop();
+// newPets.pop();
+
+// newPets.push("goat", "camel :)");
+
+// console.log(newPets);
+console.log(petAnimals); //referans dolayısıyla heap verisi değişti.
+
+const newPets = [...petAnimals];
+
+newPets.pop();
+newPets.pop();
+
+newPets.push("camel :)");
+newPets.unshift("goat");
+
+console.log(newPets);
+console.log(petAnimals); //spread operatörü ile yeni bir dizi oluşturuldu, orjinal dizi etkilenmedi
+
+const patient = {
+  name: "Paşa",
+  age: 12,
+  animal: "köpek",
+  breed: "golden retriever",
+  hobbies: ["top", "yüzme", "havlama"]
+}
+
+// const newPatient = {...patient};
+// patient.hobbies[1] = "ağaç sulamak"; //SOFT copy
+
+const newPatient = JSON.parse(JSON.stringify(patient)); 
+patient.hobbies[2] = "değişti bak"; //deep copy
+console.log(patient);
+console.log(newPatient);
