@@ -119,29 +119,29 @@
 
 
 
-const petAnimals = ["cat", "dog", "parrot", "guinea pig", "ferret"];
+// const petAnimals = ["cat", "dog", "parrot", "guinea pig", "ferret"];
 
-//yanlış..
-// const newPets = petAnimals
+// //yanlış..
+// // const newPets = petAnimals
+
+// // newPets.pop();
+// // newPets.pop();
+
+// // newPets.push("goat", "camel :)");
+
+// // console.log(newPets);
+// console.log(petAnimals); //referans dolayısıyla heap verisi değişti.
+
+// const newPets = [...petAnimals];
 
 // newPets.pop();
 // newPets.pop();
 
-// newPets.push("goat", "camel :)");
+// newPets.push("camel :)");
+// newPets.unshift("goat");
 
 // console.log(newPets);
-console.log(petAnimals); //referans dolayısıyla heap verisi değişti.
-
-const newPets = [...petAnimals];
-
-newPets.pop();
-newPets.pop();
-
-newPets.push("camel :)");
-newPets.unshift("goat");
-
-console.log(newPets);
-console.log(petAnimals); //spread operatörü ile yeni bir dizi oluşturuldu, orjinal dizi etkilenmedi
+// console.log(petAnimals); //spread operatörü ile yeni bir dizi oluşturuldu, orjinal dizi etkilenmedi
 
 const patient = {
   name: "Paşa",
@@ -152,9 +152,11 @@ const patient = {
 }
 
 // const newPatient = {...patient};
-// patient.hobbies[1] = "ağaç sulamak"; //SOFT copy
+// patient.hobbies[1] = "ağaç sulamak"; //shallow copy
 
 const newPatient = JSON.parse(JSON.stringify(patient)); 
-patient.hobbies[2] = "değişti bak"; //deep copy
+// patient.hobbies[2] = "değişti bak"; //deep copy
 console.log(patient);
 console.log(newPatient);
+
+console.log(Object.is(patient.hobbies, newPatient.hobbies));
