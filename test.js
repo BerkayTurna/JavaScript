@@ -63,12 +63,28 @@ const ogrenciler = ["Ali", "Barkın", "Berkay", "Cenk", "Çağatay"];
 // greetEveryone("Berkay", "Cenk", "Mert", "Orkun", "Hicran", "Buse", "Onder");
 
 //destructuring
-function ilkIkiyiCikar(liste) {
-  const [a, b, ...gerikalan] = liste;
-  return gerikalan;
+// function ilkIkiyiCikar(liste) {
+//   const [a, b, ...gerikalan] = liste;
+//   return gerikalan;
+// }
+
+// const kaynak = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// const ilkIkisizKaynak = ilkIkiyiCikar(kaynak);
+// console.log(ilkIkisizKaynak);
+
+
+// Palindrom deneme
+
+function isPalindrome(palin) {
+    for(let i=0; i<palin.length; i++){
+        if(palin[i] !== palin[palin.length-i-1]){
+            result = "Palindrom değil"
+        } else {
+            result = "Palindrom"
+        }
+    }
+    return result;
 }
 
-const kaynak = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-const ilkIkisizKaynak = ilkIkiyiCikar(kaynak);
-console.log(ilkIkisizKaynak);
+console.log(isPalindrome("ala"));
