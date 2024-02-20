@@ -73,18 +73,18 @@ const ogrenciler = ["Ali", "Barkın", "Berkay", "Cenk", "Çağatay"];
 // const ilkIkisizKaynak = ilkIkiyiCikar(kaynak);
 // console.log(ilkIkisizKaynak);
 
-
 // Palindrom deneme
 
-function isPalindrome(palin) {
-    for(let i=0; i<palin.length; i++){
-        if(palin[i] !== palin[palin.length-i-1]){
-            result = "Palindrom değil"
-        } else {
-            result = "Palindrom"
-        }
+function isPalindrome(word) {
+  let result = true;
+  for (let i = 0; i < word.length; i++) {
+    if (word[i] !== word[word.length - i - 1]) {
+      result = false;
+      break;
     }
-    return result;
+    console.log(result);
+  }
+  return result;
 }
 
-console.log(isPalindrome("ala"));
+console.log(isPalindrome("ava"));
