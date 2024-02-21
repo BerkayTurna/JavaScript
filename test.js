@@ -75,19 +75,32 @@ const ogrenciler = ["Ali", "Barkın", "Berkay", "Cenk", "Çağatay"];
 
 // Palindrom deneme
 
-function isPalindrome(word) {
-  let result = true;
-  for (let i = 0; i < word.length; i++) {
-    if (word[i] !== word[word.length - i - 1]) {
-      result = false;
-      break;
+// function isPalindrome(word) {
+//   let result = true;
+//   for (let i = 0; i < word.length; i++) {
+//     if (word[i] !== word[word.length - i - 1]) {
+//       result = false;
+//       break;
+//     }
+//     console.log(result);
+//   }
+//   return result;
+// }
+
+// console.log(isPalindrome("ava"));
+
+
+//en büyük sayıyı bul
+
+function biggestNumber(numbersArr){
+  let num = [];
+  for(let i=0;i<numbersArr.length;i++){
+    if(numbersArr[i]>num){
+      num=numbersArr[i]
     }
-    console.log(result);
   }
-  return result;
+  return num
 }
+const nums = [1,5,9,-196,125,-3,27,96,32,1326,16];
 
-console.log(isPalindrome("ava"));
-
-
-//
+console.log(biggestNumber(nums));
