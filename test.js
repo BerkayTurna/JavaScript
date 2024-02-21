@@ -88,3 +88,6 @@ function isPalindrome(word) {
 }
 
 console.log(isPalindrome("ava"));
+
+
+//
