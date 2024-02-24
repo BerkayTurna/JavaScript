@@ -59,7 +59,7 @@ const students = [
     age: 38,
     isDeleted: true,
     isActive: false,
-    courses: ["JavaScript", "HTNL"],
+    courses: ["JavaScript", "HTML"],
     instructors: [
       { fullName: "Orkun Durmaz", topics: ["JavaScript", "React"] },
       { fullName: "Onder Tarım", topics: ["React Native"] },
@@ -67,18 +67,27 @@ const students = [
   },
 ];
 
-//forEach
+//forEach 
 
 const result = students.forEach((student, index) =>
   console.log(`coursesIndex ${index}: <${student.fullName}> ${student.courses}`)
+);
+
+const result2 = students.forEach((student, index) =>
+  console.log(`${index} ${student.isDeleted}`)
 );
 
 //map
 
 const newStu = students.map((student) => student.courses);
 
-console.log(newStu);
+console.log(newStu.flat());
+
+const newStd = students.map((stu) => stu.age);
+console.log(newStd);
 
 //filter
 
-console.log(students.filter((student) => !student.isDeleted && student.isActive));
+console.log(
+  students.filter((student) => !student.isDeleted && student.isActive)
+);
