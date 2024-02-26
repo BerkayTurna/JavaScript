@@ -47,29 +47,52 @@
 // console.table(owner1);
 // console.log(owner1.description);
 
-class PatientOwner {
-    #firstName;
-    #lastName;
-    #petLastName;
-  constructor(firstName, lastName, petName, petLastName, phone, city) {
-    this.#firstName = firstName;
-    this.#lastName = lastName;
-    this.petName = petName;
-    this.#petLastName = petLastName;
-    this.phone = phone;
-    this.city = city;
-  }
-  sayHello(){
-    console.log("Hello");
-  }
-}
+// class PatientOwner {
+//     #firstName;
+//     #lastName;
+//     #petLastName;
+//   constructor(firstName, lastName, petName, petLastName, phone, city) {
+//     this.#firstName = firstName;
+//     this.#lastName = lastName;
+//     this.petName = petName;
+//     this.#petLastName = petLastName;
+//     this.phone = phone;
+//     this.city = city;
+//   }
+//   sayHello(){
+//     console.log("Hello");
+//   }
+// }
 
-const owner1 = new PatientOwner("Cenk", "Kaynak", "Olaf", "Kaynak", "01234567890", "İzmir");
+// const owner1 = new PatientOwner("Cenk", "Kaynak", "Olaf", "Kaynak", "01234567890", "İzmir");
 // const owner2 = new PatientOwner("Orkun Durmaz", "Jaina", "01324658765", "İzmir");
 // const owner3 = new PatientOwner("Barkın Sayın", "Susam", "1395635103570", "İstanbul");
 
-get fullName() {
-    return `${this.#firstName} ${this.#lastName}`;
+// get fullName() {
+//     return `${this.#firstName} ${this.#lastName}`;
+// }
+
+// console.log(owner1);
+
+
+//Change the Prototype to a New Object
+
+function Dog(name){
+    this.name = name;
 }
 
-console.log(owner1);
+Dog.prototype = {
+    numLegs: 4,
+    eat: function(){
+        console.log("Ham hum ham hum");
+    },
+    describe(){
+        console.log("Benim adım " + this.name);
+    }
+};
+
+const kopek = new Dog("Paşa");
+
+console.log(kopek);
+console.log(kopek.eat());
+console.log(kopek.describe());
