@@ -74,25 +74,107 @@
 
 // console.log(owner1);
 
-
 //Change the Prototype to a New Object
 
-function Dog(name){
-    this.name = name;
-}
+// function Dog(name) {
+//   this.name = name;
+// }
 
-Dog.prototype = {
-    numLegs: 4,
-    eat: function(){
-        console.log("Ham hum ham hum");
-    },
-    describe(){
-        console.log("Benim adım " + this.name);
-    }
+// Dog.prototype = {
+//   numLegs: 4,
+//   eat: function () {
+//     console.log("Ham hum ham hum");
+//   },
+//   describe() {
+//     console.log("Benim adım " + this.name);
+//   },
+// };
+
+// const kopek = new Dog("Paşa");
+
+// console.log(kopek);
+// console.log(kopek.eat());
+// console.log(kopek.describe());
+
+// //Use Inheritance So You Don't Repeat Yourself
+
+// function Cat(name) {
+//   this.name = name;
+// }
+// Cat.prototype = {
+//   constructor: Cat,
+// //   eat: function () {
+// //     console.log("nom nom nom");
+// //   },
+// };
+// function Bear(name) {
+//   this.name = name;
+// }
+// Bear.prototype = {
+//   constructor: Bear,
+// //   eat: function () {
+// //     console.log("nom nom nom");
+// //   },
+// };
+// function Animal(){}
+// Animal.prototype = {
+//     constructor: Animal,
+//     eat: function(){
+//         console.log("nom nom nom");
+//     }
+// }
+
+//Understand Where an Object's Prototype Comes From
+
+// function Dog(name){
+//     this.name=name;
+// }
+// let beagle = new Dog("Snoopy");
+
+// console.log(Dog.prototype.isPrototypeOf(beagle));
+
+//Understand the Prototype Chain
+
+// function Dog(name) {
+//   this.name = name;
+// }
+
+// let beagle = new Dog("Snoopy");
+
+// console.log(Dog.prototype.isPrototypeOf(beagle));
+
+// console.log(Object.prototype.isPrototypeOf(Dog.prototype));
+
+//Use Closure to Protect Properties Within an Object from Being Modified Externally
+
+// function Bird() {
+//     let weight=15;
+//     this.getWeight= function(){
+//         return weight;
+//     }
+// }
+
+// let ducky = new Bird();
+
+// console.log(ducky.getWeight());
+
+//Override Inherited Methods
+
+function Bird() {}
+Bird.prototype.fly = function () {
+  return "I am flying!";
 };
 
-const kopek = new Dog("Paşa");
+function Penguin() {}
 
-console.log(kopek);
-console.log(kopek.eat());
-console.log(kopek.describe());
+Penguin.prototype = Object.create(Bird.prototype);
+
+Penguin.prototype.constructor=Penguin;
+
+Penguin.prototype.fly= function(){
+    return "Alas, this is a flightless bird.";
+}
+
+let penguin = new Penguin();
+
+console.log(penguin.fly());
