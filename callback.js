@@ -1,16 +1,16 @@
-// const hesap  = (num1, num2, callback) => {
-//     return callback(num1, num2);
+// const hesap = (num1, num2, callback) => {
+//   return callback(num1, num2);
+// };
+
+// function multiply(num1, num2) {
+//   return num1 * num2;
 // }
 
-// function multiply(num1,num2) {
-//     return num1 * num2;
+// function sum(num1, num2) {
+//   return num1 + num2;
 // }
 
-// function sum(num1,num2) {
-//     return num1 + num2;
-// }
-
-// console.log(hesap(3,5,sum));
+// console.log(hesap(3, 5, sum));
 
 // const students = ["Berkay", "Cenk", "Mert", "Orkun", "Hicran", "Buse", "Onder"];
 
@@ -26,9 +26,10 @@
 // };
 
 // const logElementWithIndex = (element, index) => {
-//     console.log(`index ${index}: ${element}`);
-// }
-// const newArr=[];
+//   console.log(`index ${index}: ${element}`);
+// };
+
+// const newArr = [];
 // ourOwnForEach(students, (student, index) => {
 //   if (index % 2 === 0) {
 //     newArr.push(student);
@@ -59,7 +60,7 @@
 //         if (index % 2 === 0) {
 //             return student;
 //         }
-        
+
 //     }
 // );
 
@@ -96,3 +97,22 @@
 // const x = ()=>console.log("Selam");
 
 // console.log(x());
+
+// function makeDouble(num1, num2) {
+//   num1 = num2;
+//   return num1 * num2;
+// }
+
+// console.log(makeDouble(3, 5));
+
+// function multiply(num1, num2) {
+//   return num1 * num2;
+// }
+
+// function whichOne(num1, num2, callB) {
+//     console.log(callB(num1,num2));
+// }
+
+// whichOne(4,6,multiply);
+
+

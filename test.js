@@ -7,7 +7,7 @@
 // console.log(deli);
 // console.log(ali);
 
-const ogrenciler = ["Ali", "Barkın", "Berkay", "Cenk", "Çağatay"];
+// const ogrenciler = ["Ali", "Barkın", "Berkay", "Cenk", "Çağatay"];
 
 // let yeniOgrenciler = ogrenciler;
 
@@ -88,7 +88,6 @@ const ogrenciler = ["Ali", "Barkın", "Berkay", "Cenk", "Çağatay"];
 
 // console.log(isPalindrome("racecar"));
 
-
 //en büyük sayıyı bul
 
 // function biggestNumber(numbersArr){
@@ -106,33 +105,59 @@ const ogrenciler = ["Ali", "Barkın", "Berkay", "Cenk", "Çağatay"];
 
 //Bir sayı dizisinde tekrar eden elemanları bul ve console'a yazdır.
 
-function findSameNumbers(arr){
-    sameNumbers=[];
-    for(let i=0; i<arr.length; i++){
-        for(let j=i+1; j<arr.length; j++){
-            if(arr[i]===arr[j] && !sameNumbers.includes(arr[i])) {
-                sameNumbers.push(arr[i])
-            }
-        }
-    }
-    return sameNumbers;
+// function findSameNumbers(arr){
+//     sameNumbers=[];
+//     for(let i=0; i<arr.length; i++){
+//         for(let j=i+1; j<arr.length; j++){
+//             if(arr[i]===arr[j] && !sameNumbers.includes(arr[i])) {
+//                 sameNumbers.push(arr[i])
+//             }
+//         }
+//     }
+//     return sameNumbers;
+// }
+
+// const numbers = [3, 6, 8, 6, 2, 15, 6, 2, 3, 19, 21];
+
+// console.log(findSameNumbers(numbers));
+
+// //Asal sayı bul, diziden çıkar ve konsola yazdır :)
+
+// function findPrimeNumbers(arr){
+//     primeArr=[];
+//     for(let i=0; i<arr.length; i++){
+//         if(arr[i] % 2 === 0 || arr[i] % 3 === 0 || arr[i] % 5 === 0){
+//            primeArr.push(arr[i]);
+//         }
+//     }
+//     return primeArr;
+// }
+
+// const forPrime = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
+// console.log(findPrimeNumbers(forPrime));
+
+function getPositiveNums(element) {
+  if (element >= 0 && !(element % 2)) {
+    return true;
+  }
 }
 
-const numbers = [3, 6, 8, 6, 2, 15, 6, 2, 3, 19, 21];
-
-console.log(findSameNumbers(numbers));
-
-//Asal sayı bul, diziden çıkar ve konsola yazdır :)
-
-function findPrimeNumbers(arr){
-    primeArr=[];
-    for(let i=0; i<arr.length; i++){
-        if(arr[i] % 2 === 0 || arr[i] % 3 === 0 || arr[i] % 5 === 0){
-           primeArr.push(arr[i]);
-        }
-    }
-    return primeArr;
+function getNegativeNums(element) {
+  if (element < 0 && element % 2) {
+    return true;
+  }
 }
 
-const forPrime = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
-console.log(findPrimeNumbers(forPrime));
+function getNums(arr, callback) {
+  const newArr = [];
+  arr.forEach((element) => {
+    if (callback(element)) {
+      newArr.push(element);
+    }
+  });
+  return newArr;
+}
+
+const nums = [0, -3, 2, 1, 4, 6, -6, 5, -7, -5, 8, 9, 21, 22];
+
+console.log(getNums(nums, getPositiveNums));
