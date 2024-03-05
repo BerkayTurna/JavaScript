@@ -1,0 +1,49 @@
+body {
+    text-align: center;
+    background-color: darkgoldenrod;
+}
+
+h1 {
+    font-size: 4rem;
+    color: antiquewhite;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-shadow: 4px 3px red;
+}
+.drum {
+    outline: none;
+    border: 8px solid red;
+    border-radius: 6px;
+    font-size: 3rem;
+    margin: 10px;
+    line-height: 1.5;
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+}
+.w{
+    background-image: url(img/tom1.png);
+}
+
+.a{
+    background-image: url(img/tom2.png);
+}
+
+.s{
+    background-image: url(img/tom3.png);
+}
+
+.d{
+    background-image: url(img/tom4.png);
+}
+
+.j{
+    background-image: url(img/snare.png);
+}
+.k{
+    background-image: url(img/crash.png);
+}
+
+.l{
+    background-image: url(img/kick.png);
+}

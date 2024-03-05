@@ -329,39 +329,39 @@
 const numbers = [3,9,7,6,8,10,20,23,89,97];
 
 //dizideki çift sayıları 5 ile çarpıp topla
-// function getEvenNums(element) {
-//   if (!(element % 2)) {
-//     return true;
-//   }
-// };
-
-// function getNumsMultiply5(arr, callback) {
-//   const newArr = [];
-//   arr.forEach((element) => {
-//     if (callback(element)) {
-//       newArr.push(element*5);
-//     }
-//   });
-//   return newArr;
-// };
-
-// console.log(getNumsMultiply5(numbers,getEvenNums));
-
-// const newArr = getNumsMultiply5(numbers,getEvenNums);
-
-// const total = newArr.reduce((acc,number)=> acc + number);
-
-// console.log(total);
-
-function sumEvenMultiply(arr) {
-  let sum = 0;
-  for (let num of arr) {
-    if (num % 2 === 0) {
-      sum += num * 5;
-    }
+function getEvenNums(element) {
+  if (!(element % 2)) {
+    return true;
   }
-  return sum;
-}
+};
 
-const result = sumEvenMultiply(numbers);
-console.log(result);
+function getNumsMultiply5(arr, callback) {
+  const newArr = [];
+  arr.forEach((element) => {
+    if (callback(element)) {
+      newArr.push(element*5);
+    }
+  });
+  return newArr;
+};
+
+console.log(getNumsMultiply5(numbers,getEvenNums));
+
+const newArr = getNumsMultiply5(numbers,getEvenNums);
+
+const total = newArr.reduce((acc,number)=> acc + number);
+
+console.log(total);
+
+// function sumEvenMultiply(arr) {
+//   let sum = 0;
+//   for (let num of arr) {
+//     if (num % 2 === 0) {
+//       sum += num * 5;
+//     }
+//   }
+//   return sum;
+// }
+
+// const result = sumEvenMultiply(numbers);
+// console.log(result);
