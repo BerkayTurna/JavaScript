@@ -136,28 +136,44 @@
 // const forPrime = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
 // console.log(findPrimeNumbers(forPrime));
 
-function getPositiveNums(element) {
-  if (element >= 0 && !(element % 2)) {
-    return true;
-  }
-}
+// function getPositiveNums(element) {
+//   if (element >= 0 && !(element % 2)) {
+//     return true;
+//   }
+// }
 
-function getNegativeNums(element) {
-  if (element < 0 && element % 2) {
-    return true;
-  }
-}
+// function getNegativeNums(element) {
+//   if (element < 0 && element % 2) {
+//     return true;
+//   }
+// }
 
-function getNums(arr, callback) {
-  const newArr = [];
-  arr.forEach((element) => {
-    if (callback(element)) {
-      newArr.push(element);
-    }
-  });
-  return newArr;
-}
+// function getNums(arr, callback) {
+//   const newArr = [];
+//   arr.forEach((element) => {
+//     if (callback(element)) {
+//       newArr.push(element);
+//     }
+//   });
+//   return newArr;
+// }
 
-const nums = [0, -3, 2, 1, 4, 6, -6, 5, -7, -5, 8, 9, 21, 22];
+// const nums = [0, -3, 2, 1, 4, 6, -6, 5, -7, -5, 8, 9, 21, 22];
 
-console.log(getNums(nums, getPositiveNums));
+// console.log(getNums(nums, getPositiveNums));
+
+// fetch deneme
+
+// fetch('https://jsonplaceholder.typicode.com/posts/1')
+//   .then(response => {
+//     if (!response.ok) {
+//       throw new Error('Network response was not ok');
+//     }
+//     return response.json(); // Sunucudan gelen yanıtı JSON olarak dönüştür
+//   })
+//   .then(data => {
+//     console.log(data); // JSON verisini konsola yazdır
+//   })
+//   .catch(error => {
+//     console.error('There was a problem with your fetch operation:', error);
+//   });
