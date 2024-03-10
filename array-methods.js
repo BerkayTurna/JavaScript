@@ -322,7 +322,7 @@
 
 // console.log(sortStudentsByName);
 
-// const sortStudentsByScore = students.sort((a,b)=> (a.score-b.score));
+// const sortStudentsByScore = students.sort((a,b)=> (a.score-b.score));      
 
 // console.log(sortStudentsByScore);
 
