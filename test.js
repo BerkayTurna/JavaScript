@@ -177,3 +177,67 @@
 //   .catch(error => {
 //     console.error('There was a problem with your fetch operation:', error);
 //   });
+
+//async denemeler
+
+const mainUrl = "https://jsonplaceholder.typicode.com/todos";
+
+// const getTodos = (resource) => {
+//   return new Promise((resolve, reject) => {
+//     const request = new XMLHttpRequest(); // readystate 0
+
+//     request.addEventListener("readystatechange", () => {
+//       //   console.log(request, request.readyState);
+//       if (request.readyState === 4 && request.status === 200) {
+//         const data = JSON.parse(request.responseText); //JSON'ı nesneye dönüştürme
+//         resolve(data);
+//       } else if (request.readyState === 4) {
+//         reject("Could not fetch data");
+//       }
+//     });
+
+//     request.open("GET", resource); //readystate 1
+//     request.send(); //readystate 2
+//   });
+// };
+
+// getTodos(`${mainUrl}/1`)
+//   .then((data) => {
+//     console.log("promise 1: ", data);
+//     return getTodos(`${mainUrl}/2`);
+//   })
+//   .then((data) => {
+//     console.log("promise 2: ", data);
+//     return getTodos(`${mainUrl}/3`);
+//   })
+//   .then(data => {
+//     console.log('promise 3: ', data);
+//     return getTodos(`${mainUrl}/4`)})
+//   .catch((err) => console.log(err));
+
+// getTodos((err, data) => {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log(data);
+//   }
+// });
+
+//promise örnek
+
+// const getSomething = () => {
+//   return new Promise((resolve, reject) => {
+//     resolve("some data");
+//     reject("some error");
+//   });
+// };
+
+//fetch api
+
+fetch(`${mainUrl}/1 `)
+  .then((response) => {
+    console.log(response);
+    return response.json();
+  })
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
