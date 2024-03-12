@@ -34,6 +34,7 @@ const handleClick = (e) => {
       }
       else{
           changePlayerTurn();
+          showAlert(`Sıra ${playerTurn} oyuncusunda`);
       }
     }
   }
@@ -108,7 +109,12 @@ const restartGame = ()=>{
 const showAlert = (msg)=>{
     alertBox.style.display = "block";
     alertBox.textContent = msg;
+    setTimeout(()=> {
+        alertBox.style.display ="none";
+    },3000)
 }
+
+//restart'a eventListener ekleme
 restartBtn.addEventListener("click", restartGame);
 
 //Oyunu başlatma fonksiyonu çağırma
