@@ -234,10 +234,29 @@ const mainUrl = "https://jsonplaceholder.typicode.com/todos";
 
 //fetch api
 
-fetch(`${mainUrl}/1 `)
-  .then((response) => {
-    console.log(response);
-    return response.json();
-  })
-  .then((data) => console.log(data))
-  .catch((err) => console.log(err));
+// fetch(`${mainUrl}/1 `)
+//   .then((response) => {
+//     console.log(response);
+//     return response.json();
+//   })
+//   .then((data) => console.log(data))
+//   .catch((err) => console.log(err));
+
+
+//async & await
+
+console.log(1);
+console.log(2);
+const getTodos = async () => {
+  const response = await fetch(`${mainUrl}/1`);
+
+  if(response.status !== 200){
+    throw new Error('Cannot fetch the data');
+  }
+  const data = await response.json();
+  return data;
+};
+
+getTodos().then((data) => console.log(data));
+console.log(3);
+console.log(4);
