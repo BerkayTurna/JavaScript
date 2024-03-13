@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Madimi+One&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Madimi One", sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, rgb(55, 49, 49), rgb(177, 14, 14));
+}
+
+.calculator {
+  border: 1px solid white;
+  padding: 20px;
+  border-radius: 15px;
+  background: transparent;
+  box-shadow: 0px 3px 15px rgba(255, 255, 255, 0.9);
+}
+
+input {
+  width: 320px;
+  border: none;
+  padding: 24px;
+  margin: 10px;
+  background: transparent;
+  font-size: 40px;
+  text-align: right;
+  cursor: pointer;
+  color: rgb(203, 191, 191);
+  font-family: "Black Ops One", system-ui;
+}
+
+input::placeholder {
+  color: rgb(203, 191, 191);
+  font-family: "Black Ops One", system-ui;
+}
+
+button {
+  border: none;
+  width: 60px;
+  height: 60px;
+  margin: 8px;
+  border-radius: 60%;
+  background: transparent;
+  color: rgb(203, 191, 191);
+  font-size: 22px;
+  box-shadow: 6px 6px 10px rgba(199, 187, 187, 0.1);
+  cursor: pointer;
+}
+
+.equalBtn{
+    background-color: orange;
+}
+
+.operator{
+    color: yellow;
+}
+.acBtn{
+    color: red;
+}
