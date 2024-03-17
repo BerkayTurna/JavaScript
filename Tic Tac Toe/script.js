@@ -1,3 +1,4 @@
+"use strict"
 const gameCells = document.querySelectorAll(".cell");
 const player1 = document.querySelector(".player1");
 const player2 = document.querySelector(".player2");
@@ -15,29 +16,30 @@ player2.textContent = `Player 2: ${nextPlayer}`;
 //Oyunu başlatma fonksiyonu
 const startGame = () => {
   gameCells.forEach((cell) => {
-    cell.addEventListener("click", handleClick); 
+    cell.addEventListener(
+      "click",
+      handleClick
+    );
   });
 };
 
 const handleClick = (e) => {
-    if (e.target.textContent === "") {
-      e.target.textContent = playerTurn;
-      if(checkWin()){
-        //   console.log(`Kazanan ${playerTurn}!`);
-          showAlert(`Kazanan ${playerTurn}!`);
-          disableCells();
-      }
-      else if(checkTie()){
-        //   console.log("Berabere!");
-          showAlert("Berabere!");
-          disableCells();
-      }
-      else{
-          changePlayerTurn();
-          showAlert(`Sıra ${playerTurn} oyuncusunda`);
-      }
+  if (e.target.textContent === "") {
+    e.target.textContent = playerTurn;
+    if (checkWin()) {
+      //   console.log(`Kazanan ${playerTurn}!`);
+      showAlert(`Kazanan ${playerTurn}!`);
+      disableCells();
+    } else if (checkTie()) {
+      //   console.log("Berabere!");
+      showAlert("Berabere!");
+      disableCells();
+    } else {
+      changePlayerTurn();
+      showAlert(`Sıra ${playerTurn} oyuncusunda`);
     }
   }
+};
 
 //Oyuncu değişikliği fonksiyonu
 const changePlayerTurn = () => {
@@ -47,7 +49,7 @@ const changePlayerTurn = () => {
   //     playerTurn = currentPlayer;
   //   }
 
-  //turnery hali daha verimli gibi..
+  //turnery hali daha verimli gibi.. side effect normalde istenmez
   playerTurn = playerTurn === currentPlayer ? nextPlayer : currentPlayer;
 };
 
@@ -69,50 +71,50 @@ const checkWin = () => {
       gameCells[pos1].textContent !== "" &&
       gameCells[pos1].textContent === gameCells[pos2].textContent &&
       gameCells[pos2].textContent === gameCells[pos3].textContent
-    ){
-        return true;
+    ) {
+      return true;
     }
   }
   return false;
 };
 
-//Berabere kalma kontrol fonksiyonu 
-const checkTie = ()=>{
-    let emptyCellsCount = 0;
-    gameCells.forEach( cell => {
-        if(cell.textContent === ""){
-            emptyCellsCount++;
-        }
-    });
-    
-    return emptyCellsCount=== 0 && !checkWin();
-}
+//Berabere kalma kontrol fonksiyonu
+const checkTie = () => {
+  let emptyCellsCount = 0;
+  gameCells.forEach((cell) => {
+    if (cell.textContent === "") {
+      emptyCellsCount++;
+    }
+  });
+
+  return emptyCellsCount === 0 && !checkWin();
+};
 
 // Oyun bitiminde hücreleri sabitleme fonksiyonu
-const disableCells= ()=> {
-    gameCells.forEach(cell =>{
-        cell.removeEventListener("click", handleClick);
-        cell.classList.add("disabled");
-    })
-}
+const disableCells = () => {
+  gameCells.forEach((cell) => {
+    cell.removeEventListener("click", handleClick);
+    cell.classList.add("disabled");
+  });
+};
 
 //Oyunu yeniden başlatma fonksiyonu
-const restartGame = ()=>{
-    gameCells.forEach(cell=>{
-        cell.textContent = "";
-        cell.classList.remove("disabled")
-    })
-    startGame();
-}
+const restartGame = () => {
+  gameCells.forEach((cell) => {
+    cell.textContent = "";
+    cell.classList.remove("disabled");
+  });
+  startGame();
+};
 
 //Sonuç bildirisi fonksiyonu
-const showAlert = (msg)=>{
-    alertBox.style.display = "block";
-    alertBox.textContent = msg;
-    setTimeout(()=> {
-        alertBox.style.display ="none";
-    },3000)
-}
+const showAlert = (msg) => {
+  alertBox.style.display = "block";
+  alertBox.textContent = msg;
+  setTimeout(() => {
+    alertBox.style.display = "none";
+  }, 3000);
+};
 
 //restart'a eventListener ekleme
 restartBtn.addEventListener("click", restartGame);

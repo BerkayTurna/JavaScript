@@ -20,5 +20,3 @@ arr.forEach((button) => {
     }
   });
 });
-
-
