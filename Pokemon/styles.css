@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  list-style: none;
+}
+.logo {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.app-level-header {
+  background-color: #fb1b1b;
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
+  padding: 20px
+}
+h1 {
+  -webkit-text-fill-color: #f6cf57;
+  -webkit-text-stroke: 2px #0a285f;
+}
+.navbar ul{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  font-size: 20px;
+  font-weight: 700;
+  -webkit-text-fill-color: #f6cf57;
+  -webkit-text-stroke: 1px #0a285f;
+}
+.navbar li{
+    transition: 0.3s;
+}
+.navbar li:hover{
+    padding: 20;
+    border-bottom: 2px solid #0a285f;
+}
+.filters {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  justify-content: center;
+  gap: 20px;
+}
+.input {
+  background-color: #f6cf57;
+  border-radius: 10px;
+  padding: 3px;
+}
+.pokemon-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+}
+.poke-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  width: 200px;
+  height: 300px;
+}
+.poke-card img {
+  width: 70%;
+}
