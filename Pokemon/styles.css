@@ -50,14 +50,14 @@ h1 {
   border-radius: 10px;
   padding: 3px;
 }
-.pokemon-list-container {
+.pokemon-card-container {
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
     justify-content: center;
     align-items: center;
 }
-.poke-card {
+.pokemon-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -67,6 +67,6 @@ h1 {
   width: 200px;
   height: 300px;
 }
-.poke-card img {
+.pokemon-card img {
   width: 70%;
 }
