@@ -1,7 +1,7 @@
 const pokemonApiURL = 'https://pokeapi.co/api/v2/';
 
 //await kullanarak id ile pokemon çekme fonksiyonu
-const getPokemonById = async (...pokemonId) => {
+const getPokemonById = async (pokemonId) => {
     try {
         const res = await fetch(`${pokemonApiURL}pokemon/${pokemonId}`);
         const data = await res.json();
@@ -29,6 +29,9 @@ const createPokemonCard = (pokemonData) => {
     pokemonNumName.textContent = `#${pokemonData.id} ${pokemonData.name}`;
     cardContainer.appendChild(pokemonNumName)
     const typesContainer = document.createElement("div");
+    const typesTag = document.createElement("h3");
+    typesTag.textContent = "Types:";
+    typesContainer.appendChild(typesTag);
     typesContainer.classList.add("pokemon-types");
     pokemonData.types.forEach(
         (type) => {
@@ -38,25 +41,47 @@ const createPokemonCard = (pokemonData) => {
             typesContainer.appendChild(pokemonType);
         }
     );
-    cardContainer.appendChild(typesContainer);            //[0] index vermeyince çalışmıyor!!
-    document.getElementsByClassName("pokemon-card-container")[0].appendChild(cardContainer);
+    cardContainer.appendChild(typesContainer);
+    document.getElementById("pokemon-card-container").appendChild(cardContainer);
 };
-
+//
 //istenen limitlerle tüm pokemonları çekme fonksiyonu
 const getAllPokemon = async (limit = 0, offset = 0) => {
     const res = await fetch(`${pokemonApiURL}pokemon?limit=${limit}&offset=${offset}`);
     const data = await res.json();
+    console.log(data)
     return data;
 };
 
 // getAllPokemon()
-//     .then(allPokemon => console.log(allPokemon));
+//     .then(allPokemon => {
+//         console.log(allPokemon)});
+
+// HTML template nasıl olur?
+// döngüde asenkron nasıl çalışır???
+const displayAllPokemon = async (limit = 151, offset = 0) => {
+    try {
+        const allPokemonData = await getAllPokemon(limit, offset);
+        const pokemonList = allPokemonData.results;
+        console.log(pokemonList);
+
+        pokemonList.forEach((pokemon) => {
+            getPokemonById(pokemon.name)
+                .then((pokemonData) => createPokemonCard(pokemonData))
+        });
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+displayAllPokemon();
+
 
 //
-getPokemonById(2)
-    .then(pokemon => {
-        createPokemonCard(pokemon)
-    });
+// getPokemonById(2)
+//     .then(pokemon => {
+//         createPokemonCard(pokemon)
+//     });
 
 // fetch(`${pokeApiURL}pokemon/1`)
 //     .then(response => {
