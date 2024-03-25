@@ -24,41 +24,67 @@ function App() {
   const [nameInput, setNameInput] = useState("");
   const [courseInput, setCourseInput] = useState("");
   const [instructorInput, setInstructorInput] = useState("");
+
+  //error state
+  const [nameError, setNameError] = useState(false);
+  const [courseError, setCourseError] = useState(false);
+  const [instructorError, setInstructorError] = useState(false);
+
   return (
     /* JSX */
     <div className="app">
       <h2>Student Manager</h2>
       <h3>Enter Data</h3>
-      <form action="" style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "15px",
-        alignItems: "center",
-      }}>
-        <input type="text" placeholder="student name"
+      <form action="" className="student-form" >
+        <input type="text" placeholder="student name" value={nameInput}
           onChange={(event) => setNameInput(event.target.value)} />
-        <input type="text" placeholder="course"
+          {/*nameError koşulu meydana geldiğinde string yazma - conditional rendering*/}
+        {nameError && <p>İsim alanı boş olamaz!</p>}
+        <input type="text" placeholder="course" value={courseInput}
           onChange={(event) => setCourseInput(event.target.value)} />
-        <input type="text" placeholder="instructor"
+          {courseError && <p>Course alanı boş olamaz!</p>}
+        <input type="text" placeholder="instructor" value={instructorInput}
           onChange={(event) => setInstructorInput(event.target.value)} />
+          {instructorError && <p>Instructor alanı boş olamaz!</p>}
         <input
           type="submit"
           onClick={
             (event) => {
               event.preventDefault();
-              // console.log(nameInput, courseInput, instructorInput)}
-              setName(nameInput);
-              setCourse(courseInput);
-              setInstructor(instructorInput);
+
+              //Hatalı giriş olmadığını varsayarak başlama
+              //Hataları silme
+              setNameError(false);
+              setCourseError(false);
+              setInstructorError(false);
+
+
+              if (!nameInput.trim() || !courseInput.trim() || !instructorInput.trim()) {
+                // koşul sağlanıyorsa ve Error varsa yazdırma
+               !nameInput.trim() && setNameError(true);
+               !courseInput.trim() && setCourseError(true);
+               !instructorInput.trim() && setInstructorError(true);
+              } else {
+                
+                setName(nameInput.trim());
+                setCourse(courseInput.trim());
+                setInstructor(instructorInput.trim());
+
+                //input içeriğini temizleme
+                setNameInput("");
+                setCourseInput("");
+                setInstructorInput("");
+
+                //DOM DOM Kurşunu
+                // document.getElementById("nameInputId").value = "";
+                // document.getElementById("courseInputId").value = "";
+                // document.getElementById("instructorId").value = "";
+              };
             }
           } />
       </form>
       <div className="student-list">
-        <div className="student-card" style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}>
+        <div className="student-card">
           <h3>Student Data</h3>
           <ul style={{
             listStyle: "none"
