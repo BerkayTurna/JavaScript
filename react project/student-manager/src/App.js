@@ -20,6 +20,9 @@ function App() {
   const [course, setCourse] = useState("");
   const [instructor, setInstructor] = useState("");
 
+  //Liste oluşturma hooku
+  const [studentsList, setStudentsList] = useState([]);
+
   //input state
   const [nameInput, setNameInput] = useState("");
   const [courseInput, setCourseInput] = useState("");
@@ -38,14 +41,14 @@ function App() {
       <form action="" className="student-form" >
         <input type="text" placeholder="student name" value={nameInput}
           onChange={(event) => setNameInput(event.target.value)} />
-          {/*nameError koşulu meydana geldiğinde string yazma - conditional rendering*/}
+        {/*nameError koşulu meydana geldiğinde string yazma - conditional rendering*/}
         {nameError && <p>İsim alanı boş olamaz!</p>}
         <input type="text" placeholder="course" value={courseInput}
           onChange={(event) => setCourseInput(event.target.value)} />
-          {courseError && <p>Course alanı boş olamaz!</p>}
+        {courseError && <p>Course alanı boş olamaz!</p>}
         <input type="text" placeholder="instructor" value={instructorInput}
           onChange={(event) => setInstructorInput(event.target.value)} />
-          {instructorError && <p>Instructor alanı boş olamaz!</p>}
+        {instructorError && <p>Instructor alanı boş olamaz!</p>}
         <input
           type="submit"
           onClick={
@@ -61,14 +64,25 @@ function App() {
 
               if (!nameInput.trim() || !courseInput.trim() || !instructorInput.trim()) {
                 // koşul sağlanıyorsa ve Error varsa yazdırma
-               !nameInput.trim() && setNameError(true);
-               !courseInput.trim() && setCourseError(true);
-               !instructorInput.trim() && setInstructorError(true);
+                !nameInput.trim() && setNameError(true);
+                !courseInput.trim() && setCourseError(true);
+                !instructorInput.trim() && setInstructorError(true);
               } else {
-                
+
                 setName(nameInput.trim());
                 setCourse(courseInput.trim());
                 setInstructor(instructorInput.trim());
+                setStudentsList(
+                  [
+                    ...studentsList,
+                    {
+                      name: nameInput,
+                      course: courseInput,
+                      instructor: instructorInput,
+                      id: Math.random().toString(),                      
+                    }
+                  ]
+                )
 
                 //input içeriğini temizleme
                 setNameInput("");
@@ -85,14 +99,26 @@ function App() {
       </form>
       <div className="student-list">
         <div className="student-card">
-          <h3>Student Data</h3>
-          <ul style={{
-            listStyle: "none"
-          }}>
-            <li>{name}</li>
-            <li>{course}</li>
-            <li>{instructor}</li>
-          </ul>
+          <h3>Student List</h3>
+          {studentsList.map(
+            (student) => {
+              return (
+                <div className="student-card" key={student.id}>
+                  <ul style={{
+                    listStyle: "none",
+                    border: "2px solid green",
+                    borderRadius: "8px",
+                    padding: "6px",
+                    textAlign: "left"
+                  }}>
+                    <li><em>Name:</em> {student.name}</li>
+                    <li>Course: {student.course}</li>
+                    <li>Instructor: {student.instructor}</li>
+                  </ul>
+                </div>
+              )
+            }
+          )}
         </div>
       </div>
 
