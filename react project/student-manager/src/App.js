@@ -57,7 +57,12 @@ function App() {
       setStudent({ name: "", course: "", instructor: "" });
     }
   }
-
+  const removeStudent = (id) => {
+    setStudentsList(prevStudentsList => {
+      // Filter metoduyla belirli bir öğrenciyi listeden kaldırma
+      return prevStudentsList.filter(student => student.id !== id);
+    });
+  };
   return (
     <div className="app">
       <header className='header'>
@@ -104,48 +109,13 @@ function App() {
                     <li><em>Course:</em> {student.course}</li>
                     <li><em>Instructor:</em> {student.instructor}</li>
                   </ul>
+                  <button onClick={() => removeStudent(student.id)}>Remove</button>
                 </div>
               )
             }
           )}
         </div>
       </div>
-
-      {/* <p>{studentName1}</p>
-      <button style={{
-        color: "red",
-        backgroundColor: "aliceblue",
-        borderRadius: "5px",
-      }}
-      className="change-student-name"
-        onClick={
-          () => {
-            setStudentName1("Cenk Grid Kaynak");
-          }
-        }
-      >
-        Change Student Name
-      </button>
-      <p>{studentName2}</p>
-      <button className="change-student-name"
-        onClick={
-          () => {
-            setStudentName2("Berkay Turna");
-          }
-        }
-      >
-        Change Student Name
-      </button>
-      <p>{studentName3}</p>
-      <button className="change-student-name"
-        onClick={
-          () => {
-            setStudentName3("Ali Rıza Taşkıran");
-          }
-        }
-      >
-        Change Student Name
-      </button> */}
     </div>
   );
 }
