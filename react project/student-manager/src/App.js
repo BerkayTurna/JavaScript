@@ -41,38 +41,53 @@ function App() {
           instructor: !student.instructor.trim(),
         }
       );
+      // return
+    } else {
+      //studentsList state güncelleme
+      setStudentsList(
+        function (prevStudentList) {
+          return [...prevStudentList, {
+            ...student,
+            id: Math.random().toString()
+          }]
+        },
+
+      );
+      //input içeriğini temizleme - two way binding
+      setStudent({ name: "", course: "", instructor: "" });
     }
-
-    //studentsList güncelleme
-    setStudentsList(
-      [
-        ...studentsList,
-        {
-          ...student,
-          id: Math.random().toString()
-        }
-      ]
-    );
-    //input içeriğini temizleme - two way binding
-    setStudent({ name: "", course: "", instructor: "" });
-
   }
+
   return (
-    /* JSX */
     <div className="app">
-      <h2>Student Manager</h2>
-      <h3>Enter Data</h3>
+      <header className='header'>
+        <h2>Student Manager</h2>
+        <nav>
+          <a href="http://www.google.com">Main</a>
+          <a href=''>Başka</a>
+          <a href=''>Neler</a>
+          <a href=''>Olsa Ki?</a>
+        </nav>
+      </header>
+      <h3>Enter Student Data</h3>
       <form action="" className="student-form" >
-        <input type="text" placeholder="student name" value={student.name}
-          onChange={(event) => setStudent({ ...student, name: event.target.value })} />
-        {/*nameError koşulu meydana geldiğinde string yazma - conditional rendering*/}
-        {allError.name && <p>İsim alanı boş olamaz!</p>}
-        <input type="text" placeholder="course" value={student.course}
-          onChange={(event) => setStudent({ ...student, course: event.target.value })} />
-        {allError.course && <p>Course alanı boş olamaz!</p>}
-        <input type="text" placeholder="instructor" value={student.instructor}
-          onChange={(event) => setStudent({ ...student, instructor: event.target.value })} />
-        {allError.instructor && <p>Instructor alanı boş olamaz!</p>}
+        <div className="input-control">
+          <input type="text" placeholder="student name" value={student.name}
+            onChange={(event) => setStudent({ ...student, name: event.target.value })}
+          />
+          {/*nameError koşulu meydana geldiğinde string yazma - conditional rendering*/}
+          {allError.name && <p>İsim alanı boş olamaz!</p>}
+        </div>
+        <div className="input-control">
+          <input type="text" placeholder="course" value={student.course}
+            onChange={(event) => setStudent({ ...student, course: event.target.value })} />
+          {allError.course && <p>Course alanı boş olamaz!</p>}
+        </div>
+        <div className="input-control">
+          <input type="text" placeholder="instructor" value={student.instructor}
+            onChange={(event) => setStudent({ ...student, instructor: event.target.value })} />
+          {allError.instructor && <p>Instructor alanı boş olamaz!</p>}
+        </div>
         <input
           type="submit"
           onClick={addStudent} />
@@ -84,16 +99,10 @@ function App() {
             (student) => {
               return (
                 <div className="student-card" key={student.id}>
-                  <ul style={{
-                    listStyle: "none",
-                    border: "2px solid green",
-                    borderRadius: "8px",
-                    padding: "6px",
-                    textAlign: "left"
-                  }}>
+                  <ul>
                     <li><em>Name:</em> {student.name}</li>
-                    <li>Course: {student.course}</li>
-                    <li>Instructor: {student.instructor}</li>
+                    <li><em>Course:</em> {student.course}</li>
+                    <li><em>Instructor:</em> {student.instructor}</li>
                   </ul>
                 </div>
               )
