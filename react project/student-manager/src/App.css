@@ -12,8 +12,17 @@
 }
 nav {
   display: flex;
-  text-decoration: none;
   gap: 15px;
+}
+nav a {
+  text-decoration: none;
+  color: black;
+  transition: 0.3s;
+  padding: 0;
+}
+nav a:hover {
+  border-bottom: 2px solid black;
+  padding: 5px;
 }
 .student-form {
   display: flex;

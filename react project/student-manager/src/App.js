@@ -1,5 +1,6 @@
 import './App.css';
 import { useState } from 'react';
+import Header from './header.js';
 
 function App() {
 
@@ -65,15 +66,7 @@ function App() {
   };
   return (
     <div className="app">
-      <header className='header'>
-        <h2>Student Manager</h2>
-        <nav>
-          <a href="http://www.google.com">Main</a>
-          <a href=''>Başka</a>
-          <a href=''>Neler</a>
-          <a href=''>Olsa Ki?</a>
-        </nav>
-      </header>
+      <Header />
       <h3>Enter Student Data</h3>
       <form action="" className="student-form" >
         <div className="input-control">
