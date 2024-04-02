@@ -45,14 +45,22 @@ function App() {
       // return(early)
     } else {
       //studentsList state güncelleme
-      setStudentsList(prevStudentList => {
-        const newStudent = {
-          ...student,
-          // Yeni öğrenci için bir artan ID ataması yap
-          id: prevStudentList.length + 1
-        };
-        return [...prevStudentList, newStudent];
-      });
+      setStudentsList(
+        function (prevStudentList) {
+          return [...prevStudentList, {
+            ...student,
+            id: Math.random().toString()
+          }]
+        },
+        // setStudentsList(prevStudentList => {
+        //   const newStudent = {
+        //     ...student,
+        //     // Yeni öğrenci için bir artan ID ataması yap
+        //     id: prevStudentList.length + 1
+        //   };
+        //   return [...prevStudentList, newStudent];
+        // });
+      );
       //input içeriğini temizleme - two way binding
       setStudent({ name: "", course: "", instructor: "" });
     }

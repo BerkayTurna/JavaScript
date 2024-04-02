@@ -4,10 +4,9 @@ function Header() {
             <header className='header'>
                 <h2>Student Manager</h2>
                 <nav>
-                    <a href="*">Main</a>
-                    <a href='*'>Başka</a>
-                    <a href='*'>Neler</a>
-                    <a href='*'>Olsa Ki?</a>
+                    <a href="*">Home</a>
+                    <a href='*'>About</a>
+                    <a href='*'>Contact</a>
                 </nav>
             </header>
         </div>
