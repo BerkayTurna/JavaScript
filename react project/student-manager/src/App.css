@@ -3,14 +3,17 @@
 }
 .header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: whitesmoke;
+  height: 60px;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 nav {
   display: flex;
   text-decoration: none;
   gap: 15px;
-  align-items: center;
 }
 .student-form {
   display: flex;
@@ -37,7 +40,8 @@ nav {
   text-align: left;
 }
 
-input[type="submit"] {
+input[type="submit"],
+.student-card button {
   border: none;
   padding: 5px 14px;
   border-radius: 3px;
@@ -46,7 +50,8 @@ input[type="submit"] {
   transition: 0.3s ease;
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover,
+.student-card button:hover {
   cursor: pointer;
   background-color: black;
   color: whitesmoke;

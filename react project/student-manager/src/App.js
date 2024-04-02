@@ -109,7 +109,7 @@ function App() {
                     <li><em>Course:</em> {student.course}</li>
                     <li><em>Instructor:</em> {student.instructor}</li>
                   </ul>
-                  <button onClick={() => removeStudent(student.id)}>Remove</button>
+                  <button onClick={() => removeStudent(student.id)}>Kaldır</button>
                 </div>
               )
             }
