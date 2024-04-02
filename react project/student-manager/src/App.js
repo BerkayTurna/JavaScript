@@ -42,18 +42,17 @@ function App() {
           instructor: !student.instructor.trim(),
         }
       );
-      // return
+      // return(early)
     } else {
       //studentsList state güncelleme
-      setStudentsList(
-        function (prevStudentList) {
-          return [...prevStudentList, {
-            ...student,
-            id: Math.random().toString()
-          }]
-        },
-
-      );
+      setStudentsList(prevStudentList => {
+        const newStudent = {
+          ...student,
+          // Yeni öğrenci için bir artan ID ataması yap
+          id: prevStudentList.length + 1
+        };
+        return [...prevStudentList, newStudent];
+      });
       //input içeriğini temizleme - two way binding
       setStudent({ name: "", course: "", instructor: "" });
     }
@@ -64,6 +63,7 @@ function App() {
       return prevStudentsList.filter(student => student.id !== id);
     });
   };
+
   return (
     <div className="app">
       <Header />
@@ -91,18 +91,18 @@ function App() {
           onClick={addStudent} />
       </form>
       <div className="student-list">
-        <div className="student-card">
+        <div className='student-container'>
           <h3>Student List</h3>
           {studentsList.map(
             (student) => {
               return (
                 <div className="student-card" key={student.id}>
+                  <button className='remove-button' onClick={() => removeStudent(student.id)}>X</button>
                   <ul>
                     <li><em>Name:</em> {student.name}</li>
                     <li><em>Course:</em> {student.course}</li>
                     <li><em>Instructor:</em> {student.instructor}</li>
                   </ul>
-                  <button onClick={() => removeStudent(student.id)}>Kaldır</button>
                 </div>
               )
             }
