@@ -52,6 +52,7 @@ function App() {
             id: Math.random().toString()
           }]
         },
+        //length değiştiğinde saçmalıyor
         // setStudentsList(prevStudentList => {
         //   const newStudent = {
         //     ...student,
