@@ -13,10 +13,20 @@ function PokemonFilter() {
         try {
             const res = await fetch(`${pokemonApiURL}pokemon`);
             const data = await res.json();
-            setPokemonList(data.results);
-            setFilteredPokemonList(data.results);
-        }
-        catch (error) {
+            const promises = data.results.map(async pokemon => {
+                const res = await fetch(pokemon.url);
+                const pokemonData = await res.json();
+                return {
+                    id: pokemonData.id,
+                    name: pokemonData.name,
+                    image: pokemonData.sprites.other['official-artwork'].front_default,
+                    types: pokemonData.types.map(type => type.type.name)
+                };
+            });
+            const pokemonDetail = await Promise.all(promises);
+            setPokemonList(pokemonDetail);
+            setFilteredPokemonList(pokemonDetail);
+        } catch (error) {
             console.error('Error fetching Pokemon data:', error);
         }
     };
@@ -64,7 +74,10 @@ function PokemonFilter() {
             <div>
                 {filteredPokemonList.map((pokemon, index) => (
                     <div key={index}>
+                        <img src={pokemon.image} alt={pokemon.name} />
                         <h2>{pokemon.name}</h2>
+                        <p>ID: {pokemon.id}</p>
+                        <p>Types: {pokemon.types.join(", ")}</p>
                     </div>
                 ))}
             </div>
