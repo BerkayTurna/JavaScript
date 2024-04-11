@@ -9,16 +9,42 @@ function PokemonFilter() {
 
     const pokemonApiURL = 'https://pokeapi.co/api/v2/';
 
-    const getPokemonById = async (pokemonId) => {
+    const getPokemonById = async () => {
         try {
-            const res = await fetch(`${pokemonApiURL}pokemon/${pokemonId}`);
+            const res = await fetch(`${pokemonApiURL}pokemon`);
             const data = await res.json();
-            return data;
+            setPokemonList(data.results);
+            setFilteredPokemonList(data.results);
         }
         catch (error) {
             console.error('Error fetching Pokemon data:', error);
         }
     };
+    const filterPokemon = () => {
+        let filtered = pokemonList;
+        if (nameFilter) {
+            filtered = filtered.filter(pokemon =>
+                pokemon.name.toLowercase().includes(nameFilter.toLowerCase())
+            );
+        }
+        if (typeFilter) {
+            filtered = filtered.filter(async pokemon => {
+                const res = await fetch(pokemon.url);
+                const data = await res.json();
+                return data.types.some(type => type.type.name.toLowerCase() === typeFilter.toLowerCase());
+            });
+        }
+        setFilteredPokemonList(filtered);
+    };
+
+    const handleNameInputChange = event => {
+        setNameFilter(event.target.value);
+    };
+
+    const handleTypeInputChange = event => {
+        setTypeFilter(event.target.value);
+    };
+
     return (
         <div>
             <h1>Pokemon Filter</h1>
@@ -26,15 +52,15 @@ function PokemonFilter() {
                 type="text"
                 placeholder='Filter poke by name'
                 value={nameFilter}
-            // onChange={handleTypeInputChange}
+                onChange={handleNameInputChange}
             />
             <input
                 type="text"
                 placeholder='Filter poke by type'
                 value={typeFilter}
-            // onChange={handleTypeInputChange}
+                onChange={handleTypeInputChange}
             />
-            <button onClick={getPokemonById}>Pokemon Data Getir</button>
+            <button onClick={getPokemonById}>Pokemon Getir</button>
             <div>
                 {filteredPokemonList.map((pokemon, index) => (
                     <div key={index}>
