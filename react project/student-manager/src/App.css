@@ -1,5 +1,6 @@
 .app {
   text-align: center;
+  @import url("https://fonts.googleapis.com/css2?family=Miltonian+Tattoo&family=Skranji:wght@400;700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 }
 .header {
   display: flex;
@@ -9,6 +10,10 @@
   align-items: center;
   padding-left: 30px;
   padding-right: 30px;
+}
+body {
+  background-color: aliceblue;
+  font-family: "Work Sans", sans-serif;
 }
 nav a {
   text-decoration: none;
