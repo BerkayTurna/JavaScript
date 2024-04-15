@@ -37,6 +37,7 @@ function PokemonFilter() {
         getPokemon();
     }, []);
 
+    // pokemon isim ve tipine göre filtreleme fonksiyonu
     const filterPokemon = () => {
         let filtered = pokemonList;
         if (nameFilter) {
@@ -58,6 +59,7 @@ function PokemonFilter() {
         filterPokemon();
     }, [nameFilter, typeFilter]);
 
+    //input değişikliklerinde filtrelerin çalışması
     const handleNameInputChange = event => {
         setNameFilter(event.target.value);
     };
