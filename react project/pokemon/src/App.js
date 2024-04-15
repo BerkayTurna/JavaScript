@@ -3,7 +3,7 @@ import PokemonFilter from './PokemonFilter';
 
 function App() {
   return (
-    <div>
+    <div className='App'>
       <PokemonFilter />
     </div>
   );

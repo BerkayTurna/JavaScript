@@ -79,13 +79,12 @@ function PokemonFilter() {
                 value={typeFilter}
                 onChange={handleTypeInputChange}
             />
-            {/* <button onClick={getPokemon}>Pokemon Getir</button> */}
-            <div>
+            <div className='pokemon-list'>
                 {filteredPokemonList.map((pokemon, index) => (
-                    <div key={index}>
+                    <div key={index} className='pokemon-card'>
                         <img src={pokemon.image} alt={pokemon.name} />
                         <h2>{pokemon.name}</h2>
-                        <p>ID: {pokemon.id}</p>
+                        <p># {pokemon.id}</p>
                         <p>Types: {pokemon.types.join(", ")}</p>
                     </div>
                 ))}
