@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 function PokemonFilter() {
     //useState'ler ile listeleme, filtrelemeler
@@ -8,6 +9,7 @@ function PokemonFilter() {
     const [typeFilter, setTypeFilter] = useState('');
 
     const pokemonApiURL = 'https://pokeapi.co/api/v2/';
+
     //ilk sayfa yüklenmesinde tüm listeyi getirir.
     useEffect(() => {
         const getPokemon = async () => {
@@ -66,26 +68,27 @@ function PokemonFilter() {
 
     return (
         <div>
-            <h1>Pokemon Filter</h1>
-            <input
-                type="text"
-                placeholder='Filter poke by name'
-                value={nameFilter}
-                onChange={handleNameInputChange}
-            />
-            <input
-                type="text"
-                placeholder='Filter poke by type'
-                value={typeFilter}
-                onChange={handleTypeInputChange}
-            />
+            <div className='search'>
+                <input
+                    type="text"
+                    placeholder='Filter poke by name'
+                    value={nameFilter}
+                    onChange={handleNameInputChange}
+                />
+                <input
+                    type="text"
+                    placeholder='Filter poke by type'
+                    value={typeFilter}
+                    onChange={handleTypeInputChange}
+                />
+            </div>
             <div className='pokemon-list'>
                 {filteredPokemonList.map((pokemon, index) => (
                     <div key={index} className='pokemon-card'>
                         <img src={pokemon.image} alt={pokemon.name} />
-                        <h2>{pokemon.name}</h2>
-                        <p># {pokemon.id}</p>
-                        <p>Types: {pokemon.types.join(", ")}</p>
+                        <h2>{pokemon.id} - {pokemon.name}</h2>
+                        <p>Types:</p>
+                        <p>{pokemon.types.join(", ")}</p>
                     </div>
                 ))}
             </div>
