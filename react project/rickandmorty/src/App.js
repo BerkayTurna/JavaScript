@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+import Header from './Header.js';
 
 function App() {
 
@@ -44,40 +45,9 @@ function App() {
 
   useEffect(() => { getCharacter(); }, []);
 
-
-  // tek başına yalnızca api sınırlaması nedeniyle ilk 20 karakteri alıyor
-  // useEffect(() => {
-  //   const getCharacter = async () => {
-  //     try {
-  //       const res = await fetch('https://rickandmortyapi.com/api/character');
-  //       const data = await res.json();
-  //       const promises = data.results.map(async character => {
-  //         const res = await fetch(character.url);
-  //         const charData = await res.json();
-  //         return {
-  //           image: charData.image,
-  //           id: charData.id,
-  //           name: charData.name,
-  //           status: charData.status,
-  //           species: charData.species,
-  //           type: charData.type,
-  //           gender: charData.gender,
-  //           origin: charData.origin.name,
-  //           location: charData.location.name
-  //         };
-  //       });
-  //       const charDetails = await Promise.all(promises);
-  //       setCharacterList(charDetails);
-  //     } catch (error) {
-  //       console.error('Error fetching character data:', error);
-  //     }
-  //   };
-  //   getCharacter();
-  // }, []);
-
   return (
     <div className="App">
-      <h1>Rick & Morty Characters</h1>
+      <Header />
       <div className='character-list'>
         {characterList.map((character, index) => (
           <div key={index} className='character-card'>
