@@ -1,5 +1,7 @@
 import './App.css';
 import { useState } from 'react';
+import Counter from './Counter.js';
+
 
 function App() {
   const number = 0;
@@ -26,6 +28,8 @@ function App() {
       <button onClick={numIncrease}>+10</button>
       <button onClick={numDecrease}>-10</button>
       <button onClick={incHundred}>+100</button>
+
+      <Counter />
     </div>
   );
 }
