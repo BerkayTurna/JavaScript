@@ -2,3 +2,21 @@
   text-align: center;
   font-family: "Architects Daughter", cursive;
 }
+.character-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.character-card {
+  border: 3px solid burlywood;
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.profile-image {
+  width: 350px;
+  border-radius: 10px;
+}
