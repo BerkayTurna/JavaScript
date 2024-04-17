@@ -1,4 +1,4 @@
-function Header({ nameInput, setNameInput }) {
+function Header({ nameInput, setNameInput, statusList, setStatusList }) {
     return (
         <div className="header">
             <nav className="navbar-left">
@@ -16,33 +16,39 @@ function Header({ nameInput, setNameInput }) {
                 <div className="dropdown">
                     <span className="dropdown-toggle">Status</span>
                     <div className="dropdown-menu">
-                        <span className="sub"><input type="radio" name="name" />Alive</span>
-                        <span className="sub"><input type="radio" name="name" />Dead</span>
-                        <span className="sub"><input type="radio" name="name" />Unknown</span>
+                        <span className="sub"><input type="radio" name="Stname" value="Alive" onChange={(event) => {
+                            setStatusList(event.target.value);
+                        }} />Alive</span>
+                        <span className="sub"><input type="radio" name="Stname" value="Dead" onChange={(event) => {
+                            setStatusList(event.target.value);
+                        }} />Dead</span>
+                        <span className="sub"><input type="radio" name="Stname" value="unknown" onChange={(event) => {
+                            setStatusList(event.target.value);
+                        }} />Unknown</span>
                     </div>
                 </div>
                 <div className="dropdown">
                     <span className="dropdown-toggle">Species</span>
                     <div className="dropdown-menu">
-                        <span className="sub"><input type="radio" name="name" />Human</span>
-                        <span className="sub"><input type="radio" name="name" />Alien</span>
-                        <span className="sub"><input type="radio" name="name" />Humanoid</span>
-                        <span className="sub"><input type="radio" name="name" />Poopybutthole</span>
-                        <span className="sub"><input type="radio" name="name" />Mythological Creature</span>
-                        <span className="sub"><input type="radio" name="name" />Animal</span>
-                        <span className="sub"><input type="radio" name="name" />Robot</span>
-                        <span className="sub"><input type="radio" name="name" />Cronenberg</span>
-                        <span className="sub"><input type="radio" name="name" />Disease</span>
-                        <span className="sub"><input type="radio" name="name" />Unknown</span>
+                        <span className="sub"><input type="radio" name="Spname" />Human</span>
+                        <span className="sub"><input type="radio" name="Spname" />Alien</span>
+                        <span className="sub"><input type="radio" name="Spname" />Humanoid</span>
+                        <span className="sub"><input type="radio" name="Spname" />Poopybutthole</span>
+                        <span className="sub"><input type="radio" name="Spname" />Mythological Creature</span>
+                        <span className="sub"><input type="radio" name="Spname" />Animal</span>
+                        <span className="sub"><input type="radio" name="Spname" />Robot</span>
+                        <span className="sub"><input type="radio" name="Spname" />Cronenberg</span>
+                        <span className="sub"><input type="radio" name="Spname" />Disease</span>
+                        <span className="sub"><input type="radio" name="Spname" />Unknown</span>
                     </div>
                 </div>
                 <div className="dropdown">
                     <span className="dropdown-toggle">Gender</span>
                     <div className="dropdown-menu">
-                        <span className="sub"><input type="radio" name="name" />Female</span>
-                        <span className="sub"><input type="radio" name="name" />Genderless</span>
-                        <span className="sub"><input type="radio" name="name" />Male</span>
-                        <span className="sub"><input type="radio" name="name" />Unknown</span>
+                        <span className="sub"><input type="radio" name="Gname" />Female</span>
+                        <span className="sub"><input type="radio" name="Gname" />Genderless</span>
+                        <span className="sub"><input type="radio" name="Gname" />Male</span>
+                        <span className="sub"><input type="radio" name="Gname" />Unknown</span>
                     </div>
                 </div>
             </nav>

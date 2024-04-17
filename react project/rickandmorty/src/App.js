@@ -4,10 +4,11 @@ import Header from './Header.js';
 
 function App() {
 
-  //data state
+  //state'ler
   const [characterList, setCharacterList] = useState([]);
   const [nameInput, setNameInput] = useState('');
   const [filteredCharList, setFilteredCharList] = useState([]);
+  const [statusList, setStatusList] = useState('')
 
   //Sıralı tam liste :)
   const getCharacter = async () => {
@@ -57,9 +58,18 @@ function App() {
   };
   useEffect(() => { filteredChars() }, [nameInput]);
 
+  const filteredStatus = () => {
+    let filtered = characterList;
+    if (statusList) {
+      filtered = filtered.filter(character => character.status.includes(statusList))
+    }
+    setFilteredCharList(filtered);
+  };
+  useEffect(() => { filteredStatus() }, [statusList]);
+
   return (
     <div className="App">
-      <Header nameInput={nameInput} setNameInput={setNameInput} />
+      <Header nameInput={nameInput} setNameInput={setNameInput} statusList={statusList} setStatusList={setStatusList} />
       <div className='character-list'>
         {filteredCharList.map((character, index) => (
           <div key={index} className='character-card'>
