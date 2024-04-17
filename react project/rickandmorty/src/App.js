@@ -6,6 +6,8 @@ function App() {
 
   //data state
   const [characterList, setCharacterList] = useState([]);
+  const [nameInput, setNameInput] = useState('');
+  const [filteredCharList, setFilteredCharList] = useState([]);
 
   //Sıralı tam liste :)
   const getCharacter = async () => {
@@ -45,14 +47,24 @@ function App() {
 
   useEffect(() => { getCharacter(); }, []);
 
+  //search character by name fonksiyonu
+  const filteredChars = () => {
+    let filtered = characterList;
+    if (nameInput) {
+      filtered = filtered.filter(character => character.name.toLowerCase().includes(nameInput.toLowerCase()))
+    }
+    setFilteredCharList(filtered);
+  };
+  useEffect(() => { filteredChars() }, [nameInput]);
+
   return (
     <div className="App">
-      <Header />
+      <Header nameInput={nameInput} setNameInput={setNameInput} />
       <div className='character-list'>
-        {characterList.map((character, index) => (
+        {filteredCharList.map((character, index) => (
           <div key={index} className='character-card'>
             <img className='profile-image' src={character.image} alt={character.name} />
-            <h2>{character.id} - {character.name}</h2>
+            <h3>{character.id} - {character.name}</h3>
             <p>Status: {character.status}</p>
             <p>Species: {character.species}</p>
             <p>Type: {character.type}</p>

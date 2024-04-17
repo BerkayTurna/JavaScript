@@ -29,6 +29,10 @@
 .search {
   height: 25px;
   width: 200px;
+  border-radius: 10px;
+  padding: 3px;
+  border: none;
+  box-shadow: rgba(149, 157, 165, 0.8) 0px 8px 24px;
 }
 .navbar-right {
   display: flex;
@@ -36,10 +40,13 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  width: 120px;
 }
 .dropdown-menu {
   display: none;
   position: absolute;
+  width: 120px;
+  text-align: left;
 }
 .dropdown-menu span {
   display: block;
