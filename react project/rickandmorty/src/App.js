@@ -102,6 +102,7 @@ function App() {
         genderList={genderList}
         setGenderList={setGenderList}
       />
+      <h2> Count: {filteredCharList.length}</h2>
       <div className='character-list'>
         {filteredCharList.map((character, index) => (
           <div key={index} className='character-card'>
