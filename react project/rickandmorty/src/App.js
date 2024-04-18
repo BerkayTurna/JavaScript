@@ -99,8 +99,9 @@ function App() {
         setSpeciesList={setSpeciesList}
         genderList={genderList}
         setGenderList={setGenderList}
+        getCharacter={getCharacter}
       />
-      <h2> Count: {filteredCharList.length}</h2>
+      <h2 className='counter'> Count: {filteredCharList.length}</h2>
       <div className='character-list'>
         {filteredCharList.map((character, index) => (
           <div key={index} className='character-card'>

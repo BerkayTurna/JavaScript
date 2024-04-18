@@ -1,4 +1,12 @@
-function Header({ nameInput, setNameInput, statusList, setStatusList, speciesList, setSpeciesList, genderList, setGenderList }) {
+function Header({ nameInput, setNameInput, statusList, setStatusList, speciesList, setSpeciesList, genderList, setGenderList, getCharacter }) {
+    //reset function
+    const resetFilters = () => {
+        setNameInput('');
+        setStatusList('');
+        setSpeciesList('');
+        setGenderList('');
+        getCharacter();
+    };
     return (
         <div className="header">
             <nav className="navbar-left">
@@ -78,6 +86,9 @@ function Header({ nameInput, setNameInput, statusList, setStatusList, speciesLis
                             setGenderList(event.target.value);
                         }} />Unknown</span>
                     </div>
+                </div>
+                <div>
+                    <input type="button" className="reset-btn" value="Reset" onClick={resetFilters} />
                 </div>
             </nav>
         </div>
