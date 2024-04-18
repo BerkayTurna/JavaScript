@@ -50,45 +50,43 @@ function App() {
 
   useEffect(() => { getCharacter(); }, []);
 
-  //search character by name fonksiyonu
-  const filteredChars = () => {
+  //search character by name
+  useEffect(() => {
     let filtered = characterList;
     if (nameInput) {
       filtered = filtered.filter(character => character.name.toLowerCase().includes(nameInput.toLowerCase()))
     }
     setFilteredCharList(filtered);
-  };
-  useEffect(() => { filteredChars() }, [nameInput]);
+  }, [nameInput, characterList]);
 
-  //status radio button fonksiyonu
-  const filteredStatus = () => {
+  //status radio button
+  useEffect(() => {
     let filtered = characterList;
     if (statusList) {
       filtered = filtered.filter(character => character.status.includes(statusList))
     }
     setFilteredCharList(filtered);
-  };
-  useEffect(() => { filteredStatus() }, [statusList]);
+  }, [statusList, characterList]);
 
-  //species radio button fonksiyonu
-  const filteredSpecies = () => {
+
+  //species radio button
+  useEffect(() => {
     let filtered = characterList;
     if (speciesList) {
       filtered = filtered.filter(character => character.species.includes(speciesList))
     }
     setFilteredCharList(filtered);
-  };
-  useEffect(() => { filteredSpecies() }, [speciesList]);
+  }, [speciesList, characterList]);
 
-  //gender radio button fonksiyonu
-  const filteredGender = () => {
+
+  //gender radio button
+  useEffect(() => {
     let filtered = characterList;
     if (genderList) {
       filtered = filtered.filter(character => character.gender.includes(genderList))
     }
     setFilteredCharList(filtered);
-  };
-  useEffect(() => { filteredGender() }, [genderList]);
+  }, [genderList, characterList]);
 
   return (
     <div className="App">
