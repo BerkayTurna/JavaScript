@@ -1,4 +1,4 @@
-function Header({ nameInput, setNameInput, statusList, setStatusList }) {
+function Header({ nameInput, setNameInput, statusList, setStatusList, speciesList, setSpeciesList, genderList, setGenderList }) {
     return (
         <div className="header">
             <nav className="navbar-left">
@@ -30,25 +30,53 @@ function Header({ nameInput, setNameInput, statusList, setStatusList }) {
                 <div className="dropdown">
                     <span className="dropdown-toggle">Species</span>
                     <div className="dropdown-menu">
-                        <span className="sub"><input type="radio" name="Spname" />Human</span>
-                        <span className="sub"><input type="radio" name="Spname" />Alien</span>
-                        <span className="sub"><input type="radio" name="Spname" />Humanoid</span>
-                        <span className="sub"><input type="radio" name="Spname" />Poopybutthole</span>
-                        <span className="sub"><input type="radio" name="Spname" />Mythological Creature</span>
-                        <span className="sub"><input type="radio" name="Spname" />Animal</span>
-                        <span className="sub"><input type="radio" name="Spname" />Robot</span>
-                        <span className="sub"><input type="radio" name="Spname" />Cronenberg</span>
-                        <span className="sub"><input type="radio" name="Spname" />Disease</span>
-                        <span className="sub"><input type="radio" name="Spname" />Unknown</span>
+                        <span className="sub"><input type="radio" name="Spname" value="Human" onChange={(event) => {
+                            setSpeciesList(event.target.value);
+                        }} />Human</span>
+                        <span className="sub"><input type="radio" name="Spname" value="Alien" onChange={(event) => {
+                            setSpeciesList(event.target.value);
+                        }} />Alien</span>
+                        <span className="sub"><input type="radio" name="Spname" value="Humanoid" onChange={(event) => {
+                            setSpeciesList(event.target.value);
+                        }} />Humanoid</span>
+                        <span className="sub"><input type="radio" name="Spname" value="Poopybutthole" onChange={(event) => {
+                            setSpeciesList(event.target.value);
+                        }} />Poopybutthole</span>
+                        <span className="sub"><input type="radio" name="Spname" value="Mythological Creature" onChange={(event) => {
+                            setSpeciesList(event.target.value);
+                        }} />Mythological Creature</span>
+                        <span className="sub"><input type="radio" name="Spname" value="Animal" onChange={(event) => {
+                            setSpeciesList(event.target.value);
+                        }} />Animal</span>
+                        <span className="sub"><input type="radio" name="Spname" value="Robot" onChange={(event) => {
+                            setSpeciesList(event.target.value);
+                        }} />Robot</span>
+                        <span className="sub"><input type="radio" name="Spname" value="Cronenberg" onChange={(event) => {
+                            setSpeciesList(event.target.value);
+                        }} />Cronenberg</span>
+                        <span className="sub"><input type="radio" name="Spname" value="Disease" onChange={(event) => {
+                            setSpeciesList(event.target.value);
+                        }} />Disease</span>
+                        <span className="sub"><input type="radio" name="Spname" value="unknown" onChange={(event) => {
+                            setSpeciesList(event.target.value);
+                        }} />Unknown</span>
                     </div>
                 </div>
                 <div className="dropdown">
                     <span className="dropdown-toggle">Gender</span>
                     <div className="dropdown-menu">
-                        <span className="sub"><input type="radio" name="Gname" />Female</span>
-                        <span className="sub"><input type="radio" name="Gname" />Genderless</span>
-                        <span className="sub"><input type="radio" name="Gname" />Male</span>
-                        <span className="sub"><input type="radio" name="Gname" />Unknown</span>
+                        <span className="sub"><input type="radio" name="Gname" value="Female" onChange={(event) => {
+                            setGenderList(event.target.value);
+                        }} />Female</span>
+                        <span className="sub"><input type="radio" name="Gname" value="Genderless" onChange={(event) => {
+                            setGenderList(event.target.value);
+                        }} />Genderless</span>
+                        <span className="sub"><input type="radio" name="Gname" value="Male" onChange={(event) => {
+                            setGenderList(event.target.value);
+                        }} />Male</span>
+                        <span className="sub"><input type="radio" name="Gname" value="unknown" onChange={(event) => {
+                            setGenderList(event.target.value);
+                        }} />Unknown</span>
                     </div>
                 </div>
             </nav>

@@ -9,6 +9,8 @@ function App() {
   const [nameInput, setNameInput] = useState('');
   const [filteredCharList, setFilteredCharList] = useState([]);
   const [statusList, setStatusList] = useState('')
+  const [speciesList, setSpeciesList] = useState('')
+  const [genderList, setGenderList] = useState('')
 
   //Sıralı tam liste :)
   const getCharacter = async () => {
@@ -58,6 +60,7 @@ function App() {
   };
   useEffect(() => { filteredChars() }, [nameInput]);
 
+  //status radio button fonksiyonu
   const filteredStatus = () => {
     let filtered = characterList;
     if (statusList) {
@@ -67,9 +70,38 @@ function App() {
   };
   useEffect(() => { filteredStatus() }, [statusList]);
 
+  //species radio button fonksiyonu
+  const filteredSpecies = () => {
+    let filtered = characterList;
+    if (speciesList) {
+      filtered = filtered.filter(character => character.species.includes(speciesList))
+    }
+    setFilteredCharList(filtered);
+  };
+  useEffect(() => { filteredSpecies() }, [speciesList]);
+
+  //gender radio button fonksiyonu
+  const filteredGender = () => {
+    let filtered = characterList;
+    if (genderList) {
+      filtered = filtered.filter(character => character.gender.includes(genderList))
+    }
+    setFilteredCharList(filtered);
+  };
+  useEffect(() => { filteredGender() }, [genderList]);
+
   return (
     <div className="App">
-      <Header nameInput={nameInput} setNameInput={setNameInput} statusList={statusList} setStatusList={setStatusList} />
+      <Header
+        nameInput={nameInput}
+        setNameInput={setNameInput}
+        statusList={statusList}
+        setStatusList={setStatusList}
+        speciesList={speciesList}
+        setSpeciesList={setSpeciesList}
+        genderList={genderList}
+        setGenderList={setGenderList}
+      />
       <div className='character-list'>
         {filteredCharList.map((character, index) => (
           <div key={index} className='character-card'>
