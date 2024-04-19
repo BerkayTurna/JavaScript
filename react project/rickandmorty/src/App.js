@@ -105,6 +105,7 @@ function App() {
       />
       <CharacterCards
         filteredCharList={filteredCharList}
+        statusList={statusList}
       />
       <BackToTopButton />
     </div>
