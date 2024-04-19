@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import Header from './Header.js';
+import BackToTopButton from './BackToTopButton.js';
 
 function App() {
 
@@ -8,10 +9,14 @@ function App() {
   const [characterList, setCharacterList] = useState([]);
   const [nameInput, setNameInput] = useState('');
   const [filteredCharList, setFilteredCharList] = useState([]);
-  const [statusList, setStatusList] = useState('')
-  const [speciesList, setSpeciesList] = useState('')
-  const [genderList, setGenderList] = useState('')
+  const [statusList, setStatusList] = useState('');
+  const [speciesList, setSpeciesList] = useState('');
+  const [genderList, setGenderList] = useState('');
+  const [darkMode, setDarkMode] = useState(false);
 
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
   //Sıralı tam liste :)
   const getCharacter = async () => {
     try {
@@ -89,7 +94,7 @@ function App() {
   }, [genderList, characterList]);
 
   return (
-    <div className="App">
+    <div className={`App ${darkMode ? 'dark-mode' : 'light-mode'}`}>
       <Header
         nameInput={nameInput}
         setNameInput={setNameInput}
@@ -100,6 +105,8 @@ function App() {
         genderList={genderList}
         setGenderList={setGenderList}
         getCharacter={getCharacter}
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}
       />
       <h2 className='counter'> Count: {filteredCharList.length}</h2>
       <div className='character-list'>
@@ -116,6 +123,7 @@ function App() {
           </div>
         ))}
       </div>
+      <BackToTopButton />
     </div>
   );
 }
