@@ -1,4 +1,5 @@
-function Header({ nameInput, setNameInput, statusList, setStatusList, speciesList, setSpeciesList, genderList, setGenderList, getCharacter, darkMode, toggleDarkMode }) {
+import DarkMode from "./DarkMode";
+function Header({ nameInput, setNameInput, setStatusList, setSpeciesList, setGenderList, getCharacter, darkMode, setDarkMode }) {
     //reset function
     const resetFilters = () => {
         setNameInput('');
@@ -6,13 +7,6 @@ function Header({ nameInput, setNameInput, statusList, setStatusList, speciesLis
         setSpeciesList('');
         setGenderList('');
         getCharacter();
-    };
-    function DarkModeToggleButton({ darkMode, toggleDarkMode }) {
-        return (
-            <button className="dl-btn" onClick={toggleDarkMode}>
-                {darkMode ? 'Lumos' : 'Nox'}
-            </button>
-        );
     };
     return (
         <div className="header">
@@ -94,9 +88,7 @@ function Header({ nameInput, setNameInput, statusList, setStatusList, speciesLis
                         }} />Unknown</span>
                     </div>
                 </div>
-                <div className={darkMode ? 'dark-mode' : 'light-mode'}>
-                    <DarkModeToggleButton darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-                </div>
+                <DarkMode darkMode={darkMode} setDarkMode={setDarkMode} />
                 <div>
                     <input type="button" className="reset-btn" value="Reset" onClick={resetFilters} />
                 </div>

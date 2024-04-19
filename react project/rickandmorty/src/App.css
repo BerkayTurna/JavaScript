@@ -75,6 +75,7 @@
 .dl-btn {
   padding: 5px;
   border-radius: 10px;
+  width: 60px;
 }
 .reset-btn {
   border: none;

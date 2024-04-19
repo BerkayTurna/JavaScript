@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import Header from './Header.js';
 import BackToTopButton from './BackToTopButton.js';
+import CharacterCards from './CaharacterCards.js';
 
 function App() {
 
@@ -14,9 +15,6 @@ function App() {
   const [genderList, setGenderList] = useState('');
   const [darkMode, setDarkMode] = useState(false);
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
   //Sıralı tam liste :)
   const getCharacter = async () => {
     try {
@@ -64,7 +62,7 @@ function App() {
     setFilteredCharList(filtered);
   }, [nameInput, characterList]);
 
-  //status radio button
+  //status radio buttons
   useEffect(() => {
     let filtered = characterList;
     if (statusList) {
@@ -74,7 +72,7 @@ function App() {
   }, [statusList, characterList]);
 
 
-  //species radio button
+  //species radio buttons
   useEffect(() => {
     let filtered = characterList;
     if (speciesList) {
@@ -84,7 +82,7 @@ function App() {
   }, [speciesList, characterList]);
 
 
-  //gender radio button
+  //gender radio buttons
   useEffect(() => {
     let filtered = characterList;
     if (genderList) {
@@ -98,31 +96,16 @@ function App() {
       <Header
         nameInput={nameInput}
         setNameInput={setNameInput}
-        statusList={statusList}
         setStatusList={setStatusList}
-        speciesList={speciesList}
         setSpeciesList={setSpeciesList}
-        genderList={genderList}
         setGenderList={setGenderList}
         getCharacter={getCharacter}
         darkMode={darkMode}
-        toggleDarkMode={toggleDarkMode}
+        setDarkMode={setDarkMode}
       />
-      <h2 className='counter'> Count: {filteredCharList.length}</h2>
-      <div className='character-list'>
-        {filteredCharList.map((character, index) => (
-          <div key={index} className='character-card'>
-            <img className='profile-image' src={character.image} alt={character.name} />
-            <h3>{character.id} - {character.name}</h3>
-            <p>Status: {character.status}</p>
-            <p>Species: {character.species}</p>
-            <p>Type: {character.type}</p>
-            <p>Gender: {character.gender}</p>
-            <p>Origin: {character.origin}</p>
-            <p>Location: {character.location}</p>
-          </div>
-        ))}
-      </div>
+      <CharacterCards
+        filteredCharList={filteredCharList}
+      />
       <BackToTopButton />
     </div>
   );
