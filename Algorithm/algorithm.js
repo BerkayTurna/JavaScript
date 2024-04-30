@@ -23,3 +23,9 @@ const today = [30, 4, 2024];
 //push metoduyla array içerisine yeni arrayler ekleme
 birthDay.push([9, 5, 1983], [4, 5, 1989], [5, 4, 1968], [8, 9, 1993], [9, 11, 2002]);
 console.log(birthDay);
+
+//sadece yıl olarak çıktı almak için for döngüsü kullanma
+for (let i = 0; i < birthDay.length; i++) {
+    const age = today[2] - birthDay[i][2];
+    console.log(`${birthDay[i]} yılında doğan kişi ${age} yaşında`);
+}
