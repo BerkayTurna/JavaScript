@@ -68,13 +68,13 @@
 //     }
 //     return total;
 //   }
-  
+
 //   const result = sum(1, 2, 3, 4, 5);
-  
+
 //   console.log(result);
 
 
-  //Nesnenin kalan özelliklerini bir değişkene atama
+//Nesnenin kalan özelliklerini bir değişkene atama
 
 //   const person = {
 //     name: "John",
@@ -82,31 +82,31 @@
 //     city: "London",
 //     country: "England",
 //   };
-  
+
 //   const { name, ...otherInfo } = person;
-  
+
 //   console.log(name);
 //   console.log(otherInfo);
 
 
-  //Destructuring
+//Destructuring
 
-  //Nesneden veri ayıklama
+//Nesneden veri ayıklama
 
-  // const person = {
-  //   name: "John",
-  //   age: 30,
-  //   city: "London",
-  //   country: "England",
-  // };
-  
-  // const { name, age } = person;
-  
-  // console.log(name);
-  // console.log(age);
+// const person = {
+//   name: "John",
+//   age: 30,
+//   city: "London",
+//   country: "England",
+// };
+
+// const { name, age } = person;
+
+// console.log(name);
+// console.log(age);
 
 
-  //Diziden veri ayıklama
+//Diziden veri ayıklama
 
 //   const numbers = [1, 2, 3, 4, 5];
 
@@ -151,11 +151,12 @@ const patient = {
   hobbies: ["top", "yüzme", "havlama"]
 }
 
-// const newPatient = {...patient};
+// const newPatient = { ...patient };
 // patient.hobbies[1] = "ağaç sulamak"; //shallow copy
 
-const newPatient = JSON.parse(JSON.stringify(patient)); 
-// patient.hobbies[2] = "değişti bak"; //deep copy
+const newPatient = JSON.parse(JSON.stringify(patient));
+patient.hobbies[2] = "değişti bak"; //deep copy
+
 console.log(patient);
 console.log(newPatient);
 
