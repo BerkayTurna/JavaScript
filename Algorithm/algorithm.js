@@ -24,7 +24,7 @@ const today = [30, 4, 2024];
 birthDay.push([9, 5, 1983], [4, 5, 1989], [5, 4, 1968], [8, 9, 1993], [9, 11, 2002]);
 console.log(birthDay);
 
-//sadece yıl olarak çıktı almak için for döngüsü kullanma
+//for döngüsü ile yıl ve switch ile ay belirleme 
 for (let i = 0; i < birthDay.length; i++) {
     const age = today[2] - birthDay[i][2];
 
@@ -85,3 +85,18 @@ for (let i = 0; i < birthDay.length; i++) {
     }
     console.log(`${birthDay[i][0]} ${month} ${birthDay[i][2]} doğumlu kişi ${age} yaşında.`);
 }
+
+//Cevap 2
+
+const myVar = "Hello World!";
+
+//for döngüsü kullanarak string'i yeni bir değişkene sondan başa doğru atama
+function writeReverse(string) {
+    let reverse = "";
+    for (let i = string.length - 1; i >= 0; i--) {
+        reverse += string[i];
+    }
+    return reverse;
+}
+
+console.log(writeReverse(myVar));
