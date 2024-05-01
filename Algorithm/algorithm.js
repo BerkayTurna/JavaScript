@@ -105,7 +105,7 @@ function writeReverse(string) {
 console.log(writeReverse(myVar));
 
 //Soru 3
-// const sentence = ["barkın'ın onay derdini çözme yolları"];
+// const sentence = "barkın'ın onay derdini çözme yolları";
 // yukarıdaki değişkenin ilk harflerini büyük yazdır.
 
 const mySentence = "barkın'ın onay derdini çözme yolları";
@@ -121,7 +121,10 @@ const mySentence = "barkın'ın onay derdini çözme yolları";
 // }
 // console.log(capitalizeFirstLetters(mySentence));
 
-//
+//stringin boşluklarından split metodu ile bölüp, 
+//map metoduyla her elemanın ilk harfini toUpperCase metoduyla büyük harf yapma, 
+//slice metoduyla birinci indexten itibaren elemanın kalanını ekleme ve
+//join metoduyla araya boşluklar koyarak tekrar birleştirme işlemi için bir fonksiyon
 function capitalizeFirstLetters(sentence) {
     return sentence.split(" ")
         .map((e) => e[0].toUpperCase() + e.slice(1))
