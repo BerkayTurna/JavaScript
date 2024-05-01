@@ -103,3 +103,32 @@ function writeReverse(string) {
 }
 
 console.log(writeReverse(myVar));
+
+//Soru 3
+// const sentence = ["barkın'ın onay derdini çözme yolları"];
+// yukarıdaki değişkenin ilk harflerini büyük yazdır.
+
+const mySentence = "barkın'ın onay derdini çözme yolları";
+
+// const splittedSentence = mySentence.split(" ");
+// console.log(splittedSentence);
+
+// function capitalizeFirstLetters(sentence) {
+//     const splittedSentence = sentence.split(" ");
+//     const mappedArray = splittedSentence.map((e) => e[0].toUpperCase() + e.slice(1));
+//     const finalSentence = mappedArray.join(" ");
+//     return finalSentence;
+// }
+// console.log(capitalizeFirstLetters(mySentence));
+
+//
+function capitalizeFirstLetters(sentence) {
+    return sentence.split(" ")
+        .map((e) => e[0].toUpperCase() + e.slice(1))
+        .join(" ");
+};
+
+console.log(capitalizeFirstLetters(mySentence));
+
+//Soru 4
+//
