@@ -28,65 +28,31 @@ console.log(birthDay);
 for (let i = 0; i < birthDay.length; i++) {
     let age = today[2] - birthDay[i][2];
 
-    let month = birthDay[i][1]
+    let month = birthDay[i][1];
+    // ay isimlerini alma fonksiyonu
+    function monthNames(month) {
 
-    switch (month) {
-        case 1:
-            month = "Ocak";
-            break;
+        const months = [
+            "Ocak",
+            "Şubat",
+            "Mart",
+            "Nisan",
+            "Mayıs",
+            "Haziran",
+            "Temmuz",
+            "Ağustos",
+            "Eylül",
+            "Ekim",
+            "Kasım",
+            "Aralık"
+        ];
+        return months[month - 1] || "Invalid Month";
+    };
 
-        case 2:
-            month = "Şubat";
-            break;
-
-        case 3:
-            month = "Mart";
-            break;
-
-        case 4:
-            month = "Nisan";
-            break;
-
-        case 5:
-            month = "Mayıs";
-            break;
-
-        case 6:
-            month = "Haziran";
-            break;
-
-        case 7:
-            month = "Temmuz";
-            break;
-
-        case 8:
-            month = "Ağustos";
-            break;
-
-        case 9:
-            month = "Eylül";
-            break;
-
-        case 10:
-            month = "Ekim";
-            break;
-
-        case 11:
-            month = "Kasım";
-            break;
-
-        case 12:
-            month = "Aralık";
-            break;
-
-        default:
-            console.log("invalid month");
-            break;
-    }
     if (today[1] < birthDay[i][1] || (today[1] === birthDay[i][1] && today[0] < birthDay[i][0])) {
         age--;
     }
-    console.log(`${birthDay[i][0]} ${month} ${birthDay[i][2]} doğumlu kişi ${age} yaşında.`);
+    console.log(`${birthDay[i][0]} ${monthNames(month)} ${birthDay[i][2]} doğumlu kişi ${age} yaşında.`);
 }
 
 //Cevap 2
