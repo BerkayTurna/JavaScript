@@ -28,8 +28,7 @@ console.log(birthDay);
 for (let i = 0; i < birthDay.length; i++) {
     let age = today[2] - birthDay[i][2];
 
-    let month = birthDay[i][1];
-    let day = birthDay[i][0];
+    let month = birthDay[i][1]
 
     switch (month) {
         case 1:
