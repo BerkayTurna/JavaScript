@@ -26,11 +26,12 @@ console.log(birthDay);
 
 //for döngüsü ile yıl ve switch ile ay belirleme 
 for (let i = 0; i < birthDay.length; i++) {
-    const age = today[2] - birthDay[i][2];
+    let age = today[2] - birthDay[i][2];
 
-    let month = "Ocak";
+    let month = birthDay[i][1];
+    let day = birthDay[i][0];
 
-    switch (birthDay[i][1]) {
+    switch (month) {
         case 1:
             month = "Ocak";
             break;
@@ -82,6 +83,9 @@ for (let i = 0; i < birthDay.length; i++) {
         default:
             console.log("invalid month");
             break;
+    }
+    if (today[1] < birthDay[i][1] || (today[1] === birthDay[i][1] && today[0] < birthDay[i][0])) {
+        age--;
     }
     console.log(`${birthDay[i][0]} ${month} ${birthDay[i][2]} doğumlu kişi ${age} yaşında.`);
 }
