@@ -100,4 +100,15 @@ function capitalizeFirstLetters(sentence) {
 console.log(capitalizeFirstLetters(mySentence));
 
 //Soru 4
+//const word = "abcdefg";
+//Yukarıdaki değişkenin içerisindeki sadece ilk 4 harfi tersten yazdıralım.
+
+const myWord = "abcdefg";
+
 //
+function reverseFirstFour(word) {
+    const splittedWord = word.split("").slice(0, 4).reverse().join("") + word.slice(4);
+    return console.log(splittedWord);
+};
+
+reverseFirstFour(myWord);
