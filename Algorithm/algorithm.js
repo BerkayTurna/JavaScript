@@ -105,9 +105,16 @@ console.log(capitalizeFirstLetters(mySentence));
 
 const myWord = "abcdefg";
 
-//
+//stringi .split ile parçalara ayırıp
+//.slice ile ilk 4 parçasını tutup
+//.reverse ile tersine çevirip
+//.join ile stringin orjinal halinin önüne ekleyip
+//.split ile 4. indexten itibaren geri kalanını sona ekleme  
 function reverseFirstFour(word) {
-    const splittedWord = word.split("").slice(0, 4).reverse().join("") + word.slice(4);
+    const splittedWord = word.split("")
+        .slice(0, 4)
+        .reverse()
+        .join("") + word.slice(4);
     return console.log(splittedWord);
 };
 
