@@ -119,3 +119,7 @@ function reverseFirstFour(word) {
 };
 
 reverseFirstFour(myWord);
+
+//Soru 5
+//const arr =[2,5,10,23,12,8,96] değişkenindeki 10dan büyük sayıları 
+//dönecek bir fonksiyon yaz.
