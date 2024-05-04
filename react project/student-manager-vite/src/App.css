@@ -4,4 +4,48 @@
   box-sizing: border-box;
   text-align: center;
   list-style: none;
+  text-decoration: none;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 70px;
+  background-color: burlywood;
+}
+.navright ul {
+  display: flex;
+  gap: 15px;
+}
+.navright ul a {
+  color: brown;
+  transition: 0.3s;
+}
+.navright ul a:hover {
+  border-bottom: 2px solid brown;
+  border-radius: 4px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 0;
+}
+
+form input {
+  width: 350px;
+}
+
+.student-list {
+  display: flex;
+}
+.student-card {
+  border: 6px double brown;
+  border-radius: 15px;
+  margin: 15px;
+  width: 25vw;
 }
