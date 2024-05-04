@@ -23,6 +23,7 @@ const StudentForm = ({ createStudent }) => {
       studentInput.course.trim() &&
       studentInput.instructor.trim()
     ) {
+      createStudent({ ...studentInput, id: Date.now().toString() });
       setStudentInput({
         name: "",
         course: "",
