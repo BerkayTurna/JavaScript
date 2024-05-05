@@ -8,7 +8,10 @@ function App() {
   const [studentList, setStudentList] = useState([]);
 
   const createStudent = (newStudent) => {
-    setStudentList([...studentList, newStudent]);
+    setStudentList((prevState) => [
+      ...prevState,
+      { ...newStudent, id: Date.now().toString() },
+    ]);
   };
   return (
     <div>
