@@ -76,7 +76,7 @@ const StudentForm = ({ createStudent }) => {
         value={studentInput.instructor}
       />
       {error.instructor && <p>Enter Instructor Name</p>}
-      <input type="submit" onClick={addStudent} />
+      <input type="submit" value="Add Student" onClick={addStudent} />
     </form>
   );
 };

@@ -1,11 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
-import Header from "./components/app/header/Header";
+import Header from "./components/shared/header/Header";
 import StudentList from "./components/app/student/student-list/StudentList";
 import StudentForm from "./components/app/student/student-form/StudentForm";
 
 function App() {
   const [studentList, setStudentList] = useState([]);
+
+  // useEffect(() => {
+  //   fetch(`http://localhost:5050/students`)
+  //     .then((response) => response.json())
+  //     .then((data) => setStudentList(data));
+  // }, []);
+
+  useEffect(() => {
+    const getStudentList = async () => {
+      try {
+        const res = await fetch(`http://localhost:5050/students`);
+        const data = await res.json();
+        setStudentList(data);
+      } catch {
+        console.error("Cannot fetch data", error);
+      }
+    };
+    getStudentList();
+  }, []);
 
   const createStudent = (newStudent) => {
     setStudentList((prevState) => [

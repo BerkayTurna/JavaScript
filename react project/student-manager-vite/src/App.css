@@ -42,11 +42,12 @@ form input {
 
 .student-list {
   display: flex;
+  flex-wrap: wrap;
 }
 .student-card {
   border: 6px double brown;
   border-radius: 15px;
   margin: 15px;
-  width: 25vw;
+
   padding: 6px;
 }
