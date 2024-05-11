@@ -44,10 +44,16 @@ form input {
   display: flex;
   flex-wrap: wrap;
 }
-.student-card {
+.student-card-list {
   border: 6px double brown;
   border-radius: 15px;
   margin: 15px;
-
-  padding: 6px;
+  padding: 15px;
+  position: relative;
+}
+.btn {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  cursor: crosshair;
 }

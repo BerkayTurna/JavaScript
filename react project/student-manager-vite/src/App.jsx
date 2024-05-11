@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     const getStudentList = async () => {
       try {
-        const res = await fetch(`http://localhost:5050/students`);
+        const res = await fetch(`http://localhost:3000/students`);
         const data = await res.json();
         setStudentList(data);
       } catch {
@@ -32,6 +32,11 @@ function App() {
       { ...newStudent, id: Date.now().toString() },
     ]);
   };
+  const removeStudent = (id) => {
+    setStudentList((prevList) => {
+      return prevList.filter((student) => student.id !== id);
+    });
+  };
   return (
     <div>
       <Header
@@ -40,7 +45,7 @@ function App() {
       />
       <main>
         <StudentForm createStudent={createStudent} />
-        <StudentList studentList={studentList} />
+        <StudentList studentList={studentList} removeStudent={removeStudent} />
       </main>
     </div>
   );
