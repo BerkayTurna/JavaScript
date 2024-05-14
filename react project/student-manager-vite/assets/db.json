@@ -1,28 +1,28 @@
 {
-    "students": [
-        {
-            "name": "Barkin Onay Sayin",
-            "course": "Onay Teknikleri",
-            "instructor": "Hicran Ertugral",
-            "id": "001"
-        },
-        {
-            "name": "Ali Riza Taskiran",
-            "course": "JavaScript",
-            "instructor": "Buse Ugras",
-            "id": "002"
-        },
-        {
-            "name": "Berkay Turna",
-            "course": "React",
-            "instructor": "Orun Durmaz",
-            "id": "003"
-        },
-        {
-            "name": "Cenk Kaynak",
-            "course": "Html Css",
-            "instructor": "Orkun Durmaz",
-            "id": "004"
-        }
-    ]
+  "students": [
+    {
+      "name": "Barkin Onay Sayin",
+      "course": "Onay Teknikleri",
+      "instructor": "Hicran Ertugral",
+      "id": "001"
+    },
+    {
+      "name": "Ali Riza Taskiran",
+      "course": "JavaScript",
+      "instructor": "Buse Ugras",
+      "id": "002"
+    },
+    {
+      "name": "Berkay Turna",
+      "course": "React",
+      "instructor": "Orun Durmaz",
+      "id": "003"
+    },
+    {
+      "name": "Cenk Kaynak",
+      "course": "Html Css",
+      "instructor": "Orkun Durmaz",
+      "id": "004"
+    }
+  ]
 }

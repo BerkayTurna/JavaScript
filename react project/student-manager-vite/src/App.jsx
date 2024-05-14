@@ -1,42 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import Header from "./components/shared/header/Header";
 import StudentList from "./components/app/student/student-list/StudentList";
 import StudentForm from "./components/app/student/student-form/StudentForm";
-
+// import axios from "axios";
+import useStudent from "./hooks/student/useStudent";
 function App() {
-  const [studentList, setStudentList] = useState([]);
-
-  // useEffect(() => {
-  //   fetch(`http://localhost:5050/students`)
-  //     .then((response) => response.json())
-  //     .then((data) => setStudentList(data));
-  // }, []);
+  const { studentList, getStudentList, createStudent, removeStudent } =
+    useStudent();
 
   useEffect(() => {
-    const getStudentList = async () => {
-      try {
-        const res = await fetch(`http://localhost:3000/students`);
-        const data = await res.json();
-        setStudentList(data);
-      } catch {
-        console.error("Cannot fetch data", error);
-      }
-    };
     getStudentList();
   }, []);
 
-  const createStudent = (newStudent) => {
-    setStudentList((prevState) => [
-      ...prevState,
-      { ...newStudent, id: Date.now().toString() },
-    ]);
-  };
-  const removeStudent = (id) => {
-    setStudentList((prevList) => {
-      return prevList.filter((student) => student.id !== id);
-    });
-  };
   return (
     <div>
       <Header

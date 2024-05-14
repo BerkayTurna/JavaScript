@@ -1,4 +1,10 @@
+import { useEffect } from "react";
+
 const StudentCard = ({ student, removeStudent }) => {
+  useEffect(() => {
+    console.log(`${student.id} mounted`);
+    return () => console.log(`${student.id} unmounted`);
+  }, []);
   return (
     <div className="student-card-list">
       <span className="btn" onClick={() => removeStudent(student.id)}>
