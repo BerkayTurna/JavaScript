@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { StudentContext } from "../../../../context/student/studentContext";
 
-const StudentCard = ({ student, removeStudent }) => {
+const StudentCard = ({ student }) => {
   useEffect(() => {
     console.log(`${student.id} mounted`);
     return () => console.log(`${student.id} unmounted`);
   }, []);
+  const { removeStudent } = useContext(StudentContext);
   return (
     <div className="student-card-list">
       <span className="btn" onClick={() => removeStudent(student.id)}>

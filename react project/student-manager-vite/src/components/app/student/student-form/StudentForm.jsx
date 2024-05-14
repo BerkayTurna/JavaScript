@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { StudentContext } from "../../../../context/student/studentContext";
 
-const StudentForm = ({ createStudent }) => {
+const StudentForm = () => {
   const [studentInput, setStudentInput] = useState({
     name: "",
     course: "",
@@ -38,6 +39,7 @@ const StudentForm = ({ createStudent }) => {
         setError((prevState) => ({ ...prevState, instructor: true }));
     }
   };
+  const { createStudent } = useContext(StudentContext);
   return (
     <form action="">
       <input
