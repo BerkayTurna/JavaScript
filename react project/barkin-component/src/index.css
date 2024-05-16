@@ -1,0 +1,17 @@
+* {
+  text-align: center;
+  background-color: whitesmoke;
+}
+.shape-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+select {
+  margin: 5px;
+  border-radius: 5px;
+}
+button {
+  border-radius: 5px;
+  border: 1px solid brown;
+  margin: 5px;
+}

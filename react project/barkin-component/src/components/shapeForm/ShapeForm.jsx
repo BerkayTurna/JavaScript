@@ -4,7 +4,7 @@ const ShapeForm = ({ createShape }) => {
   const [shapeForm, setShapeForm] = useState({
     color: "red",
     shape: "square",
-    size: "1",
+    size: "50",
   });
 
   const getShape = (event) => {
