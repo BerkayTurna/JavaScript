@@ -4,11 +4,14 @@ const ShapeForm = ({ createShape }) => {
   const [shapeForm, setShapeForm] = useState({
     color: "red",
     shape: "square",
+    size: "1",
   });
+
   const getShape = (event) => {
     event.preventDefault();
     createShape(shapeForm);
   };
+
   return (
     <div className="shape-form">
       <select
@@ -42,6 +45,22 @@ const ShapeForm = ({ createShape }) => {
         </option>
         <option value="rectangle">Rectangle</option>
         <option value="circle">Circle</option>
+      </select>
+      <select
+        name="size"
+        id="size"
+        onChange={(event) => {
+          setShapeForm((prevShape) => ({
+            ...prevShape,
+            size: event.target.value,
+          }));
+        }}
+      >
+        <option value="50" selected>
+          1x
+        </option>
+        <option value="100">2x</option>
+        <option value="200">3x</option>
       </select>
       <button onClick={getShape}>Get Shape</button>
     </div>

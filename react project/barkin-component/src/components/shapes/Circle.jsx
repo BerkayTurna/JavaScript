@@ -1,10 +1,10 @@
 import propTypes from "prop-types";
-const Circle = ({ color }) => {
+const Circle = ({ color, size }) => {
   return (
     <div
       style={{
-        height: "50px",
-        width: "50px",
+        height: `${size}px`,
+        width: `${size}px`,
         backgroundColor: color,
         margin: "10px",
         borderRadius: "50%",

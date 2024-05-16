@@ -1,9 +1,9 @@
-const Square = ({ color }) => {
+const Square = ({ color, size }) => {
   return (
     <div
       style={{
-        height: "50px",
-        width: "50px",
+        height: `${size}px`,
+        width: `${size}px`,
         backgroundColor: color,
         margin: "10px",
       }}

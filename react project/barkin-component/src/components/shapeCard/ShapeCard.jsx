@@ -5,9 +5,15 @@ import Square from "../shapes/Square";
 const shapeCard = ({ shape }) => {
   return (
     <div className="shape-card">
-      {(shape.shape === "square" && <Square color={shape.color} />) ||
-        (shape.shape === "rectangle" && <Rectangle color={shape.color} />) ||
-        (shape.shape === "circle" && <Circle color={shape.color} />)}
+      {(shape.shape === "square" && (
+        <Square color={shape.color} size={shape.size} />
+      )) ||
+        (shape.shape === "rectangle" && (
+          <Rectangle color={shape.color} size={shape.size} />
+        )) ||
+        (shape.shape === "circle" && (
+          <Circle color={shape.color} size={shape.size} />
+        ))}
     </div>
   );
 };

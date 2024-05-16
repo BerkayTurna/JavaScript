@@ -1,9 +1,9 @@
-const Rectangle = ({ color }) => {
+const Rectangle = ({ color, size }) => {
   return (
     <div
       style={{
-        height: "50px",
-        width: "100px",
+        height: `${size}px`,
+        width: `${size * 2}px`,
         backgroundColor: color,
         margin: "10px",
       }}
