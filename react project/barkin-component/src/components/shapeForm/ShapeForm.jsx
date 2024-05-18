@@ -26,7 +26,7 @@ const ShapeForm = () => {
           }));
         }}
       >
-        <option value="red" selected>
+        <option value="red" defaultValue="red">
           Red
         </option>
         <option value="green">Green</option>
@@ -42,7 +42,7 @@ const ShapeForm = () => {
           }));
         }}
       >
-        <option value="square" selected>
+        <option value="square" defaultValue="square">
           Square
         </option>
         <option value="rectangle">Rectangle</option>
@@ -58,7 +58,7 @@ const ShapeForm = () => {
           }));
         }}
       >
-        <option value="50" selected>
+        <option value="50" defaultValue="50">
           1x
         </option>
         <option value="100">2x</option>
