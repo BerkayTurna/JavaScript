@@ -4,14 +4,20 @@ import useStudent from "../../hooks/student/useStudent";
 export const StudentContext = createContext();
 
 export const StudentProvider = ({ children }) => {
-  const { studentList, getStudentList, createStudent, removeStudent } =
-    useStudent();
+  const {
+    studentList,
+    isLoading,
+    getStudentList,
+    createStudent,
+    removeStudent,
+  } = useStudent();
 
   useEffect(() => {
     getStudentList();
   }, []);
   const contextValue = {
     studentList,
+    isLoading,
     getStudentList,
     createStudent,
     removeStudent,
