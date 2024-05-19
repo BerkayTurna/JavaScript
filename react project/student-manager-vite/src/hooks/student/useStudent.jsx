@@ -9,22 +9,49 @@ const useStudent = () => {
     try {
       setIsLoading(true);
       const res = await axios(`http://localhost:3000/students`);
+      if (res.status !== 200) {
+        throw new Error("Student list couldn't be created");
+      }
       setStudentList(res.data);
+    } catch (error) {
+      console.log(error);
+    } finally {
       setIsLoading(false);
-    } catch {
-      console.error("Cannot fetch data", error);
     }
   };
 
   const createStudent = async (newStudent) => {
-    const res = await axios.post("http://localhost:3000/students", newStudent);
-    setStudentList((prevState) => [...prevState, res.data]);
+    try {
+      setIsLoading(true);
+      const res = await axios.post(
+        "http://localhost:3000/students",
+        newStudent
+      );
+      if (res.status !== 201) {
+        throw new Error("Student couldn't be created");
+      }
+      setStudentList((prevState) => [...prevState, res.data]);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
   const removeStudent = async (id) => {
-    const res = await axios.delete(`http://localhost:3000/students/${id}`, id);
-    setStudentList((prevList) => {
-      return prevList.filter((student) => student.id !== id);
-    });
+    try {
+      setIsLoading(true);
+      const res = await axios.delete(`http://localhost:3000/students/${id}`);
+      if (res.status !== 200) {
+        throw new Error("Student couldn't be deleted");
+      }
+      setStudentList((prevList) => {
+        return prevList.filter((student) => student.id !== id);
+      });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
   return {
     studentList,

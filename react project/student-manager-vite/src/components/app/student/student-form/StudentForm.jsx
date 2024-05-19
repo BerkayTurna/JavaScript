@@ -39,7 +39,7 @@ const StudentForm = () => {
         setError((prevState) => ({ ...prevState, instructor: true }));
     }
   };
-  const { createStudent } = useContext(StudentContext);
+  const { createStudent, isLoading } = useContext(StudentContext);
   return (
     <form action="">
       <input
@@ -78,7 +78,11 @@ const StudentForm = () => {
         value={studentInput.instructor}
       />
       {error.instructor && <p>Enter Instructor Name</p>}
-      <input type="submit" value="Add Student" onClick={addStudent} />
+      {isLoading ? (
+        <input type="submit" value="Add Student" disabled />
+      ) : (
+        <input type="submit" value="Add Student" onClick={addStudent} />
+      )}
     </form>
   );
 };
