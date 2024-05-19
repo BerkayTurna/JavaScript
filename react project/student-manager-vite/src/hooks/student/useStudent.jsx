@@ -1,20 +1,22 @@
 import { useState } from "react";
 import axios from "axios";
+import {
+  deleteStudent,
+  getStudent,
+  postStudent,
+} from "../../network/requests/studentRequests";
 
 const useStudent = () => {
   const [studentList, setStudentList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const apiURL = import.meta.env.VITE_API_URL;
-  console.log(apiURL);
+
   const getStudentList = async () => {
     try {
       setIsLoading(true);
-      const res = await axios(`${apiURL}/students`);
-      if (res.status !== 200) {
-        throw new Error("Student list couldn't be created");
-      }
-      setStudentList(res.data);
+      const student = await getStudent();
+      setStudentList(student);
     } catch (error) {
       console.log(error);
     } finally {
@@ -22,14 +24,11 @@ const useStudent = () => {
     }
   };
 
-  const createStudent = async (newStudent) => {
+  const createStudent = async (student) => {
     try {
       setIsLoading(true);
-      const res = await axios.post(`${apiURL}/students`, newStudent);
-      if (res.status !== 201) {
-        throw new Error("Student couldn't be created");
-      }
-      setStudentList((prevState) => [...prevState, res.data]);
+      const newStudent = await postStudent(student);
+      setStudentList((prevState) => [...prevState, newStudent]);
     } catch (error) {
       console.log(error);
     } finally {
@@ -39,10 +38,7 @@ const useStudent = () => {
   const removeStudent = async (id) => {
     try {
       setIsLoading(true);
-      const res = await axios.delete(`${apiURL}/students/${id}`);
-      if (res.status !== 200) {
-        throw new Error("Student couldn't be deleted");
-      }
+      await deleteStudent(id);
       setStudentList((prevList) => {
         return prevList.filter((student) => student.id !== id);
       });
