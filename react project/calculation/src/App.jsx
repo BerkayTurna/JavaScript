@@ -2,10 +2,25 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [input, setInput] = useState({ input1: "", input2: null });
   const [calcList, setCalcList] = useState([]);
-  const [input, setInput] = useState([{ input1: 0, input2: 0 }]);
 
-  const output = () => {input1, input2, calcList};
+  const operations = {
+    "+": (a, b) => a + b,
+    "-": (a, b) => a - b,
+    "*": (a, b) => a * b,
+    "/": (a, b) => a / b,
+  };
+
+  const doCalc = (operator) => {
+    const { input1, input2 } = input;
+    const result = operations[operator](input1, input2);
+    setCalcList([
+      ...calcList,
+      { input1, input2, result, operator, id: Date.now().toString() },
+    ]);
+  };
+
   return (
     <>
       <header>
@@ -15,67 +30,37 @@ function App() {
         <div className="calc-form">
           <input
             type="number"
-            onChange={(event) => {
-              setInput((prevState) => ({
-                ...prevState,
-                input1: event.target.valueAsNumber,
-              }));
-            }}
+            value={input.input1}
+            onChange={(event) =>
+              setInput({ ...input, input1: event.target.valueAsNumber })
+            }
           />
           <input
             type="number"
-            onChange={(event) => {
-              setInput((prevState) => ({
-                ...prevState,
-                input2: event.target.valueAsNumber,
-              }));
-            }}
+            value={input.input2}
+            onChange={(event) =>
+              setInput({ ...input, input2: event.target.valueAsNumber })
+            }
           />
           <div className="buttons">
-            <button
-              onClick={() => {
-                setCalcList([...calcList, {input.input1 + input.input2, id: Date.now().toString()}]);
-              }}
-            >
-              +
-            </button>
-            <button
-              onClick={() => {
-                setCalcList(input.input1 - input.input2);
-              }}
-            >
-              -
-            </button>
-            <button
-              onClick={() => {
-                setCalcList(input.input1 * input.input2);
-              }}
-            >
-              x
-            </button>
-            <button
-              onClick={() => {
-                setCalcList(input.input1 / input.input2);
-              }}
-            >
-              /
-            </button>
+            {/* Object.keys metodu bir nesnenin keylerini bir dizi olarak döndürür. */}
+            {Object.keys(operations).map((operator) => (
+              <button onClick={() => doCalc(operator)} key={operator}>
+                {operator}
+              </button>
+            ))}
           </div>
         </div>
-        <span>{calcList}</span>
-        {console.log(calcList)}
         <div className="calc-list">
-          {input.map((calc) => {
-            return (
-              <div className="calc-card" key={calc.id}>
-                <span>{calc.input1}</span>
-                <span>button</span>
-                <span>{calc.input2}</span>
-                <span>=</span>
-                <span>{calcList}</span>
-              </div>
-            );
-          })}
+          {calcList.map((calc) => (
+            <div className="calc-card" key={calc.id}>
+              <span>{calc.input1}</span>
+              <span>{calc.operator}</span>
+              <span>{calc.input2}</span>
+              <span>=</span>
+              <span>{calc.result}</span>
+            </div>
+          ))}
         </div>
       </main>
     </>
