@@ -1,5 +1,5 @@
 import React from "react";
-import CalcCard from "../calcCard/CalcCard";
+import CalcCard from "../calc-card/CalcCard";
 
 const CalcList = ({ calcList }) => {
   return (
