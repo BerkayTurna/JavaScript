@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./App.css";
 import Header from "./components/header/Header";
-import CalcCard from "./components/calc-card/CalcCard";
 import CalcList from "./components/calc-list/CalcList";
 import CalcForm from "./components/calc-form/CalcForm";
 

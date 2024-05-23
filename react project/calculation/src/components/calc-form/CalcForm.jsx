@@ -33,12 +33,14 @@ const CalcForm = ({ addCalc }) => {
         }
       />
       <div className="buttons">
+        <hr />
         {/* Object.keys metodu bir nesnenin keylerini bir dizi olarak döndürür. .values - .entries */}
         {Object.keys(operations).map((operator) => (
           <button onClick={() => doCalc(operator)} key={operator}>
             {operator}
           </button>
         ))}
+        <hr />
       </div>
     </div>
   );

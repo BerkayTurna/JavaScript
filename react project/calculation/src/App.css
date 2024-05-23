@@ -21,3 +21,7 @@ input {
   padding: 5px;
   width: 200px;
 }
+.buttons {
+  display: flex;
+  gap: 8px;
+}
