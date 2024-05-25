@@ -1,27 +1,28 @@
-import propTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-const Header = ({ title, navElements }) => {
+const Header = () => {
   return (
     <header>
       <div className="navleft">
-        <h1>{title}</h1>
+        <h1>
+          <Link to="/">Student Manager</Link>
+        </h1>
       </div>
       <div className="navright">
         <ul>
-          {navElements.map((element) => (
-            <li key={element}>
-              <a href="#">{element}</a>
-            </li>
-          ))}
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/students">Students</Link>
+          </li>
+          <li>
+            <Link to="/students/new">New Student</Link>
+          </li>
         </ul>
       </div>
     </header>
   );
-};
-
-Header.propTypes = {
-  title: propTypes.string.isRequired,
-  navElements: propTypes.arrayOf(propTypes.string).isRequired,
 };
 
 export default Header;
