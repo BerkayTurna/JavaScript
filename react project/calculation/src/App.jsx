@@ -16,6 +16,7 @@ function App() {
   return (
     <>
       <Header />
+      <h1>Berkay </h1>
       <main>
         <CalcForm addCalc={addCalc} />
         <CalcList calcList={calcList} />
