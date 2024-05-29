@@ -1,8 +1,8 @@
-import { useState } from "react";
-
-const CalcForm = ({ addCalc }) => {
+import { useState, useContext } from "react";
+import { CalcContext } from "../../contexts/CalcContext";
+const CalcForm = () => {
+  const { addCalc } = useContext(CalcContext);
   const [input, setInput] = useState({ input1: "", input2: "" });
-
   const operations = {
     "+": (a, b) => a + b,
     "-": (a, b) => a - b,

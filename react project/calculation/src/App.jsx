@@ -1,28 +1,19 @@
-import { useState } from "react";
 import "./App.css";
-import Header from "./components/header/Header";
-import CalcList from "./components/calc-list/CalcList";
 import CalcForm from "./components/calc-form/CalcForm";
-
+import CalcList from "./components/calc-list/CalcList";
+import Header from "./components/header/Header";
+import { CalcProvider } from "./contexts/CalcContext";
 function App() {
-  const [calcList, setCalcList] = useState([]);
-
-  const addCalc = (input1, operator, input2, result) => {
-    setCalcList([
-      ...calcList,
-      { input1, input2, result, operator, id: Date.now().toString() },
-    ]);
-  };
   return (
     <>
-      <Header />
-      <h1>Berkay </h1>
-      <main>
-        <CalcForm addCalc={addCalc} />
-        <CalcList calcList={calcList} />
-      </main>
+      <CalcProvider>
+        <Header />
+        <main>
+          <CalcForm />
+          <CalcList />
+        </main>
+      </CalcProvider>
     </>
   );
 }
-
 export default App;

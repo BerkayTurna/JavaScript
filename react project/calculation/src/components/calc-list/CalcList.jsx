@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import CalcCard from "../calc-card/CalcCard";
+import useCalc from "../../hooks/useCalc";
+import { CalcContext } from "../../contexts/CalcContext";
 
-const CalcList = ({ calcList }) => {
+const CalcList = () => {
+  const { calcList } = useContext(CalcContext);
   return (
     <div className="calc-list">
       {calcList.map((calc) => (
