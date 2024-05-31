@@ -11,6 +11,7 @@
     "json-backend": "json-server@0.17.4 -d 800 -p 3000 -w .assets/db.json"
   },
   "dependencies": {
+    "axios": "^1.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

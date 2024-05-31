@@ -1,15 +1,29 @@
 import { useState } from "react";
+import {
+  getCalc as getCalcAPI,
+  removeCalc,
+} from "../network/requests/calcRequests";
 
 const useCalc = () => {
   const [calcList, setCalcList] = useState([]);
 
-  const addCalc = (input1, operator, input2, result) => {
-    setCalcList([
-      ...calcList,
-      { input1, input2, result, operator, id: Date.now().toString() },
-    ]);
+  const getCalc = async () => {
+    try {
+      const result = await getCalcAPI();
+      console.log(result);
+      setCalcList(result);
+    } catch (error) {
+      console.log(error);
+    }
   };
-  return { calcList, addCalc };
+
+  const addCalc = async (calc) => {
+    try {
+      const newCalc = await createCalc(calc);
+      setCalcList([...calcList, newCalc]);
+    } catch (error) {}
+  };
+  return { calcList, addCalc, getCalc };
 };
 
 export default useCalc;
