@@ -207,19 +207,28 @@ const users = [
 ];
 
 
-const nameCorrection = (array) => {
-    const names = [];
+// const nameCorrection = (array) => {
+//     const names = [];
 
-    for (let index = 0; index < array.length; index++) {
-        const firstLetter = array[index].firstName.trim().slice(0, 1).toUpperCase();
-        const rest = array[index].firstName.trim().slice(1).toLowerCase();
-        const lastNames = array[index].lastName.trim().toUpperCase();
-        names.push(firstLetter.concat(rest) + " " + lastNames);
-    }
+//     for (let index = 0; index < array.length; index++) {
+//         const firstLetter = array[index].firstName.trim().slice(0, 1).toUpperCase();
+//         const rest = array[index].firstName.trim().slice(1).toLowerCase();
+//         const lastNames = array[index].lastName.trim().toUpperCase();
+//         names.push(firstLetter.concat(rest) + " " + lastNames);
+//     }
 
-    return console.log(names);
+//     return console.log(names);
 
-};
+// };
 
-nameCorrection(users);
+// nameCorrection(users);
 
+const formattedNames = users.map((user) => {
+    const firstName = user.firstName.trim().split(" ").map((name) => {
+        return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
+    }).join(" ");
+    const lastName = user.lastName.trim().toUpperCase();
+    return firstName + " " + lastName;
+})
+
+console.log(formattedNames);
