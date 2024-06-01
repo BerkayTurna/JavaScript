@@ -300,6 +300,7 @@ const bDaysWithSwitch = users.map((user) => {
             month = "12"
             break;
         default:
+            month = "00"
             break;
     };
     const day = String(user.birthDay.day).padStart(2, "0");
