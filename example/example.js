@@ -223,13 +223,13 @@ const users = [
 
 // nameCorrection(users);
 
-// const formattedNames = users.map((user) => {
-//     const firstName = user.firstName.trim().split(" ").map((name) => {
-//         return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
-//     }).join(" ");
-//     const lastName = user.lastName.trim().toUpperCase();
-//     return firstName + " " + lastName;
-// })
+const formattedNames = users.map((user) => {
+    const firstName = user.firstName.trim().split(" ").map((name) => {
+        return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
+    }).join(" ");
+    const lastName = user.lastName.trim().toUpperCase();
+    return firstName + " " + lastName;
+})
 
 // console.log(formattedNames);
 
@@ -310,3 +310,38 @@ const bDaysWithSwitch = users.map((user) => {
 })
 console.log(formattedBirthDays);
 console.log(bDaysWithSwitch);
+
+//Array içerisinde "John Doe xx-xx-xxxx tarihinde doğmuştur." yazdıralım.
+
+// const sentence = (array1, array2) => {
+//     for (let i = 0; i < array1.length; i++) {
+//         const element = `${array1[i]}`;
+//         return element
+//     }
+//     for (let j = 0; j < array2.length; j++) {
+//         const element1 = `${array2[j]}`;
+//         return element1
+
+//     }
+// }
+
+// console.log(sentence(formattedNames, formattedBirthDays))
+
+//Yöntem 1
+const userBirthDates = [];
+for (let i = 0; i < formattedNames.length; i++) {
+    const name = formattedNames[i];
+    const bDate = bDaysWithSwitch[i];
+    userBirthDates.push(`${name} isimli kullanıcı ${bDate} gününde doğmuştur.`);
+}
+console.log(userBirthDates);
+
+//Yöntem 2
+const userBirthDates2 = formattedNames.map((name, i) => {
+    return `${name} isimli kullanıcı ${formattedBirthDays[i]} gününde doğmuştur.`;
+});
+
+console.log(userBirthDates2);
+
+//Her iki kod da users dizininde eksik bilgi olmaması ile çalışıyor. Eksik
+//bilgi olması durumunda nasıl çalışır halde tutabiliriz?
