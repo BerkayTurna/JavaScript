@@ -223,12 +223,89 @@ const users = [
 
 // nameCorrection(users);
 
-const formattedNames = users.map((user) => {
-    const firstName = user.firstName.trim().split(" ").map((name) => {
-        return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
-    }).join(" ");
-    const lastName = user.lastName.trim().toUpperCase();
-    return firstName + " " + lastName;
+// const formattedNames = users.map((user) => {
+//     const firstName = user.firstName.trim().split(" ").map((name) => {
+//         return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
+//     }).join(" ");
+//     const lastName = user.lastName.trim().toUpperCase();
+//     return firstName + " " + lastName;
+// })
+
+// console.log(formattedNames);
+
+
+
+
+const monthNumbers = (month) => {
+    const months = [
+        "Ocak",
+        "Şubat",
+        "Mart",
+        "Nisan",
+        "Mayıs",
+        "Haziran",
+        "Temmuz",
+        "Ağustos",
+        "Eylül",
+        "Ekim",
+        "Kasım",
+        "Aralık"
+    ];
+
+    return months.indexOf(month) + 1;
+}
+const formattedBirthDays = users.map((user) => {
+
+    return user.birthDay.day + "-" + monthNumbers(user.birthDay.month) + "-" + user.birthDay.year
 })
 
-console.log(formattedNames);
+
+const bDaysWithSwitch = users.map((user) => {
+    let month = user.birthDay.month;
+    switch (month) {
+        case "Ocak":
+            month = "01"
+            break;
+        case "Şubat":
+            month = "02"
+            break;
+        case "Mart":
+            month = "03"
+            break;
+        case "Nisan":
+            month = "04"
+            break;
+        case "Mayıs":
+            month = "05"
+            break;
+        case "Haziran":
+            month = "06"
+            break;
+        case "Temmuz":
+            month = "07"
+            break;
+        case "Ağustos":
+            month = "08"
+            break;
+        case "Eylül":
+            month = "09"
+            break;
+        case "Ekim":
+            month = "10"
+            break;
+        case "Kasım":
+            month = "11"
+            break;
+        case "Aralık":
+            month = "12"
+            break;
+        default:
+            break;
+    };
+    const day = String(user.birthDay.day).padStart(2, "0");
+    const year = String(user.birthDay.year);
+    return day + "-" + month + "-" + year
+
+})
+console.log(formattedBirthDays);
+console.log(bDaysWithSwitch);
