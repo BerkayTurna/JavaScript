@@ -205,3 +205,21 @@ const users = [
         hobbies: ["Tırmanma", "Kayak"],
     },
 ];
+
+
+const nameCorrection = (array) => {
+    const names = [];
+
+    for (let index = 0; index < array.length; index++) {
+        const firstLetter = array[index].firstName.trim().slice(0, 1).toUpperCase();
+        const rest = array[index].firstName.trim().slice(1).toLowerCase();
+        const lastNames = array[index].lastName.trim().toUpperCase();
+        names.push(firstLetter.concat(rest) + " " + lastNames);
+    }
+
+    return console.log(names);
+
+};
+
+nameCorrection(users);
+
