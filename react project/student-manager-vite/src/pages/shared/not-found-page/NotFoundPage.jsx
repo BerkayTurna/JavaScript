@@ -15,10 +15,8 @@ const NotFoundPage = () => {
     }, 1000);
     return () => clearInterval(countdown); //setIntervali durdurmak için kullanılır.
   }, [time, navigate]);
-  //Yukarıdaki girişimde NotFoundPage renderlama yaparken BrowserRouter update
-  //edilemiyor.
 
-  //Aşağıdaki girişimde time 0'dan büyük olduğu sürece setTimeout ile saniyede
+  //time 0'dan büyük olduğu sürece setTimeout ile saniyede
   //bir işlem yapılırken clearTimeout zamanlayıcıyı durdurur. time 0'a geldiğinde
   //else devreye girerek useNavigate'i çağırıp anasayfaya döndürür.
   // useEffect(() => {
