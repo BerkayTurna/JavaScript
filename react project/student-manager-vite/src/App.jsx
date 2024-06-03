@@ -6,6 +6,7 @@ import NewStudentPage from "./pages/app/new-student-page/NewStudentPage";
 import StudentListPage from "./pages/app/student-list-page/StudentListPage";
 import LandingPage from "./pages/shared/landing-page/LandingPage";
 import NotFoundPage from "./pages/shared/not-found-page/NotFoundPage";
+import ReducerPage from "./pages/app/reducer-test-page/ReducerPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/students" element={<StudentListPage />} />
           <Route path="/students/new" element={<NewStudentPage />} />
           <Route path="*" element={<NotFoundPage />} />
+          <Route path="/reducer" element={<ReducerPage />} />
         </Routes>
       </StudentProvider>
     </BrowserRouter>
