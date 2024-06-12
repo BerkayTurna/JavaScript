@@ -1,83 +1,125 @@
-import { useState, useContext } from "react";
+import { createRef, useContext, useReducer } from "react";
 import { StudentContext } from "../../../../context/student/studentContext";
 
-const StudentForm = () => {
-  const [studentInput, setStudentInput] = useState({
+const initialState = {
+  studentInput: {
     name: "",
     course: "",
     instructor: "",
-  });
-  const [error, setError] = useState({
+  },
+  errors: {
     name: false,
     course: false,
     instructor: false,
-  });
+  },
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "STUDENT_INPUT":
+      return {
+        ...state,
+        studentInput: action.payload,
+      };
+    case "ERROR":
+      return {
+        ...state,
+        errors: { ...state.errors, ...action.payload },
+      };
+    case "RESET":
+      return {
+        ...state,
+        studentInput: {
+          name: "",
+          course: "",
+          instructor: "",
+        },
+        errors: {
+          name: false,
+          course: false,
+          instructor: false,
+        },
+      };
+    default:
+      return state;
+  }
+};
+const StudentForm = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const handleReset = () => {
+    dispatch({ type: "RESET" });
+    nameRef.current.value = "";
+    courseRef.current.value = "";
+    instructorRef.current.value = "";
+  };
   const addStudent = (event) => {
     event.preventDefault();
-    setError({
-      name: false,
-      course: false,
-      instructor: false,
-    });
+    console.log(state.studentInput);
     if (
-      studentInput.name.trim() &&
-      studentInput.course.trim() &&
-      studentInput.instructor.trim()
+      state.studentInput.name.trim() &&
+      state.studentInput.course.trim() &&
+      state.studentInput.instructor.trim()
     ) {
-      createStudent(studentInput);
-      setStudentInput({
-        name: "",
-        course: "",
-        instructor: "",
-      });
+      createStudent(state.studentInput);
+      handleReset();
     } else {
-      !studentInput.name.trim() &&
-        setError((prevState) => ({ ...prevState, name: true }));
-      !studentInput.course.trim() &&
-        setError((prevState) => ({ ...prevState, course: true }));
-      !studentInput.instructor.trim() &&
-        setError((prevState) => ({ ...prevState, instructor: true }));
+      !state.studentInput.name.trim()
+        ? dispatch({ type: "ERROR", payload: { name: true } })
+        : dispatch({ type: "ERROR", payload: { name: false } });
+      !state.studentInput.course.trim()
+        ? dispatch({ type: "ERROR", payload: { course: true } })
+        : dispatch({ type: "ERROR", payload: { course: false } });
+      !state.studentInput.instructor.trim()
+        ? dispatch({ type: "ERROR", payload: { instructor: true } })
+        : dispatch({ type: "ERROR", payload: { instructor: false } });
     }
   };
   const { createStudent, isLoading } = useContext(StudentContext);
+  const nameRef = createRef();
+  const courseRef = createRef();
+  const instructorRef = createRef();
+
   return (
     <form action="">
       <input
         type="text"
         placeholder="Name"
-        onChange={(event) =>
-          setStudentInput((prevState) => ({
-            ...prevState,
-            name: event.target.value,
-          }))
+        onChange={() =>
+          dispatch({
+            type: "STUDENT_INPUT",
+            payload: { ...state.studentInput, name: nameRef.current.value },
+          })
         }
-        value={studentInput.name}
+        ref={nameRef}
       />
-      {error.name && <p>Enter Student Name</p>}
+      {state.errors.name && <p>Enter Student Name</p>}
       <input
         type="text"
         placeholder="Course"
-        onChange={(event) =>
-          setStudentInput((prevState) => ({
-            ...prevState,
-            course: event.target.value,
-          }))
+        onChange={() =>
+          dispatch({
+            type: "STUDENT_INPUT",
+            payload: { ...state.studentInput, course: courseRef.current.value },
+          })
         }
-        value={studentInput.course}
+        ref={courseRef}
       />
-      {error.course && <p>Enter Course Name</p>}
+      {state.errors.course && <p>Enter Course Name</p>}
       <input
         type="text"
         placeholder="Instructor"
-        onChange={(event) =>
-          setStudentInput((prevState) => ({
-            ...prevState,
-            instructor: event.target.value,
-          }))
+        onChange={() =>
+          dispatch({
+            type: "STUDENT_INPUT",
+            payload: {
+              ...state.studentInput,
+              instructor: instructorRef.current.value,
+            },
+          })
         }
-        value={studentInput.instructor}
+        ref={instructorRef}
       />
-      {error.instructor && <p>Enter Instructor Name</p>}
+      {state.errors.instructor && <p>Enter Instructor Name</p>}
       {isLoading ? (
         <input type="submit" value="Add Student" disabled />
       ) : (
