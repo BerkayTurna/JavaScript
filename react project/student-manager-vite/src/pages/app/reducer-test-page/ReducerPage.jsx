@@ -58,6 +58,7 @@ const reducer = (state, action) => {
       return state;
   }
 };
+
 const incRef = createRef();
 const decRef = createRef();
 const numRef = createRef();

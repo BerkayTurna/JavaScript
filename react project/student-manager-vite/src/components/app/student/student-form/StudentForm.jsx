@@ -54,7 +54,6 @@ const StudentForm = () => {
   };
   const addStudent = (event) => {
     event.preventDefault();
-    console.log(state.studentInput);
     if (
       state.studentInput.name.trim() &&
       state.studentInput.course.trim() &&
